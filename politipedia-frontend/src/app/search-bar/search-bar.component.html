@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4 offset-2 d-flex align-items-center">
+      <input type="text" class="landingSearchBar" placeholder="Search for Candidates, Elections, or Sponsors">
+    </div>
+    <div class="col-2 d-flex justify-content-center">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-light btn-outline-dark" id="dropdownBasic1" ngbDropdownToggle>Candidate</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button class="dropdown-item">Candidate</button>
+          <button class="dropdown-item">Election</button>
+          <button class="dropdown-item">Sponsor</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <button type="button" id="searchBtn" class="btn btn-light btn-outline-dark">Search</button>
+    </div>
+  </div>
+</div>
+
