@@ -9,6 +9,7 @@ import { TrendingComponent } from './trending/trending.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { AboutComponent } from './about/about.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { SearchResultsTableComponent } from './search-results-table/search-results-table.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TabsComponent } from './tabs/tabs.component';
     TrendingComponent,
     SearchResultsComponent,
     AboutComponent,
-    TabsComponent
+    TabsComponent,
+    SearchResultsTableComponent
   ],
   imports: [
     BrowserModule,
