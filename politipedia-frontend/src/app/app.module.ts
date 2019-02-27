@@ -6,12 +6,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TrendingComponent } from './trending/trending.component';
+import { AboutComponent } from './about/about.component';
+import { TabsComponent } from './tabs/tabs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
-    TrendingComponent
+    TrendingComponent,
+    AboutComponent,
+    TabsComponent
   ],
   imports: [
     BrowserModule,
