@@ -22,6 +22,7 @@ import { DonorComponent } from './donor/donor.component';
 import { ContributonsComponent } from './contributons/contributons.component';
 import { ElectionsMainComponent } from './elections-main/elections-main.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
