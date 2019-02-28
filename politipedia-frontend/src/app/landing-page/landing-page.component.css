@@ -1,0 +1,11 @@
+.container-fluid{
+  height:100%;
+}
+
+app-search-bar{
+  width:100%;
+}
+
+app-search-results {
+  width: 100%;
+}

@@ -56,8 +56,11 @@ function search(text: string, pipe: PipeTransform): Country[] {
 
 export class SearchResultsTableComponent implements OnInit {
 
+  candidates: string[] = ['Donald Trump', 'Hillary Clinton', 'Bernie Sanders'];
+
   ngOnInit(): void {
   }
+
 
   constructor() {
 

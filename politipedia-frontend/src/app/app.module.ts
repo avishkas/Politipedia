@@ -14,6 +14,19 @@ import { CandidateComponent } from './candidate/candidate.component';
 import { TopdonorsComponent } from './topdonors/topdonors.component';
 import { SummaryComponent } from './summary/summary.component';
 import { PositionsComponent } from './positions/positions.component';
+import {RouterModule, Routes} from '@angular/router';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+
+
+const appRoutes: Routes = [
+  { path: 'about', component: AboutComponent},
+  { path: '', component: LandingPageComponent},
+  { path: 'candidate',
+    component: CandidateComponent,
+    data: {name: 'Placeholder candidate data'}}
+  // { path: '**', component: PageNotFoundComponent }
+];
+
 
 @NgModule({
   declarations: [
@@ -27,9 +40,14 @@ import { PositionsComponent } from './positions/positions.component';
     CandidateComponent,
     TopdonorsComponent,
     SummaryComponent,
-    PositionsComponent
+    PositionsComponent,
+    LandingPageComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      {enableTracing: false}
+    ),
     BrowserModule,
     NgbModule
   ],
