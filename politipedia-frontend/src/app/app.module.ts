@@ -17,10 +17,14 @@ import { PositionsComponent } from './positions/positions.component';
 import { RouterModule, Routes} from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BioComponent } from './bio/bio.component';
+import { DonorComponent } from './donor/donor.component';
+import { ContributonsComponent } from './contributons/contributons.component';
 
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
+  { path: 'donor', component: DonorComponent},
   { path: '', component: LandingPageComponent},
   { path: 'candidate',
     component: CandidateComponent,
@@ -42,7 +46,10 @@ const appRoutes: Routes = [
     TopdonorsComponent,
     SummaryComponent,
     PositionsComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    BioComponent,
+    DonorComponent,
+    ContributonsComponent
   ],
   imports: [
     RouterModule.forRoot(
