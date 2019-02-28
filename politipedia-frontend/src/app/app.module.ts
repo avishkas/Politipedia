@@ -29,7 +29,8 @@ const appRoutes: Routes = [
   { path: '', component: LandingPageComponent},
   { path: 'candidate',
     component: CandidateComponent,
-    data: {name: 'Placeholder candidate data'}}
+    data: {name: 'Placeholder candidate data'}},
+  { path: '*', component: LandingPageComponent}
   // { path: '**', component: PageNotFoundComponent }
 ];
 
