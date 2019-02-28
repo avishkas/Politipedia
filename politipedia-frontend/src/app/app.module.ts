@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BioComponent } from './bio/bio.component';
 import { DonorComponent } from './donor/donor.component';
 import { ContributonsComponent } from './contributons/contributons.component';
+import { ElectionsMainComponent } from './elections-main/elections-main.component';
 
 
 const appRoutes: Routes = [
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     LandingPageComponent,
     BioComponent,
     DonorComponent,
-    ContributonsComponent
+    ContributonsComponent,
+    ElectionsMainComponent
   ],
   imports: [
     RouterModule.forRoot(

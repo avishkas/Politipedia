@@ -1,0 +1,53 @@
+<p>
+  <button type="button" class="btn btn-outline-primary" (click)="isPresidentialCollapsed = !isPresidentialCollapsed">
+    Presidential
+  </button>
+</p>
+<div id="presidentialCard" [ngbCollapse]="isPresidentialCollapsed">
+  <div class="card">
+    <div class="card-body">
+      <ul>
+        <li><a routerLink="/candidate">Donald Trump</a></li>
+        <li>Ted Cruz</li>
+        <li>Hilary Clinton</li>
+        <li>Bernie Sanders</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<p>
+  <button type="button" class="btn btn-outline-primary" (click)="isSenateCollapsed = !isSenateCollapsed">
+    Senate
+  </button>
+</p>
+<div id="senateCard" [ngbCollapse]="isSenateCollapsed">
+  <div class="card">
+    <div class="card-body">
+      <ul>
+        <li>Donald Trump</li>
+        <li>Ted Cruz</li>
+        <li>Hilary Clinton</li>
+        <li>Bernie Sanders</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<p>
+  <button type="button" class="btn btn-outline-primary" (click)="isHORCollapsed = !isHORCollapsed">
+    House of Representatives
+  </button>
+</p>
+<div id="HORCard" [ngbCollapse]="isHORCollapsed">
+  <div class="card">
+    <div class="card-body">
+      <ul>
+        <li>Donald Trump</li>
+        <li>Ted Cruz</li>
+        <li>Hilary Clinton</li>
+        <li>Bernie Sanders</li>
+      </ul>
+    </div>
+  </div>
+</div>
