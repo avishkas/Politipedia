@@ -5,7 +5,7 @@
     </div>
     <div class="col-2 d-flex justify-content-center">
       <div ngbDropdown class="d-inline-block">
-        <button class="btn btn-light btn-outline-dark" id="dropdownBasic1" ngbDropdownToggle>Candidate</button>
+        <button routerLinkActive="active" class="btn btn-light btn-outline-dark" id="dropdownBasic1" ngbDropdownToggle>Candidate</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
           <button class="dropdown-item">Candidate</button>
           <button class="dropdown-item">Election</button>
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="col-2">
-      <button type="button" id="searchBtn" class="btn btn-light btn-outline-dark">Search</button>
+      <button (click)="onSearch()" type="button" id="searchBtn" class="btn btn-light btn-outline-dark">Search</button>
     </div>
   </div>
 </div>

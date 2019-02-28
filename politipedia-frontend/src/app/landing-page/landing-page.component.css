@@ -9,3 +9,8 @@ app-search-bar{
 app-search-results {
   width: 100%;
 }
+
+.fullsize{
+  width: 100%;
+  height:100%;
+}

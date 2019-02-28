@@ -1,24 +1,32 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="container-fluid justify-content-center" style="height: 100%; width: 100%;">
-  <div class="row d-flex h-25 align-items-end" >
-    <div class="col-12 d-flex justify-content-center ">
-      <h1>Politipedia</h1>
+
+<div *ngIf="freshSearchFormatActive; else notFreshSearch" class="fullsize">
+  <div class="container-fluid justify-content-center">
+    <div class="row d-flex h-25 align-items-end" >
+      <div class="col-12 d-flex justify-content-center ">
+        <h1 [@searchState]="isFreshSearch">Politipedia</h1>
+      </div>
+    </div>
+    <div class="row d-flex h-50 align-items-center justify-content-center">
+      <div class="col-12 d-flex justify-content-center">
+        <app-search-bar (searchEmitter)="onSearch($event)"></app-search-bar>
+      </div>
+    </div>
+    <div class="row d-flex h-25 align-items-center justify-content-center">
+      <div class="col-12 d-flex justify-content-center">
+        <app-trending [@searchState]="isFreshSearch" (@searchState.done)="onAnimationFinished($event)"></app-trending>
+      </div>
     </div>
   </div>
-  <div class="row d-flex h-50 align-items-center justify-content-center">
-    <div class="col-12 d-flex justify-content-center">
-      <app-search-bar></app-search-bar>
-    </div>
-  </div>
-  <div class="row d-flex h-25 align-items-center justify-content-center">
-    <div class="col-12 d-flex justify-content-center">
-      <app-trending ></app-trending>
-    </div>
-  </div>
-  <!--<div class="row d-flex align-items-center justify-content-center">-->
-    <!--<div class="col-12 d-flex justify-content-center">-->
-      <!--<app-search-results></app-search-results>-->
-    <!--</div>-->
-  <!--</div>-->
 </div>
+
+<ng-template #notFreshSearch class="fullsize">
+  <div class="container-fluid justify-content-center">
+    <div class="row d-flex h-0 align-items-end" >
+      <div class="col-12 d-flex justify-content-center ">
+        <app-search-bar (searchEmitter)="onSearch($event)"></app-search-bar>
+      </div>
+    </div>
+  </div>
+</ng-template>
 

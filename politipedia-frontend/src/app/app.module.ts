@@ -14,8 +14,9 @@ import { CandidateComponent } from './candidate/candidate.component';
 import { TopdonorsComponent } from './topdonors/topdonors.component';
 import { SummaryComponent } from './summary/summary.component';
 import { PositionsComponent } from './positions/positions.component';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const appRoutes: Routes = [
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
       {enableTracing: false}
     ),
     BrowserModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
