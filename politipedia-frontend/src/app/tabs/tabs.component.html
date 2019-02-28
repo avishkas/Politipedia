@@ -1,21 +1,21 @@
-<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-  <ngb-panel title="What is our product?">
+<ngb-accordion [closeOthers]="true" activeIds="about-1">
+  <ngb-panel title="What is our product?" id ="about-1">
     <ng-template ngbPanelContent>
       Our product provides users with an easy way to gather information about US politics. Our product compiles database information to allow users to search political candidates, past elections, campaign donors, as well as relevant bills. Instances of political candidates include Donald Trump, Barack Obama, and Rick Perry. Fields for our candidate model include biographical information, information regarding the member’s state, party, and title, vote positions, as well as data on relevant campaign contributors. Our model for past elections include instances such as the 2018 election, 2016 election, 2014 election, and more. Fields include summaries of the elections, including participating candidates and election results. Instances of campaign donors are Bloomberg LP, Fahr LLC, and Uline Inc. Fields for our campaign donor model include a summary of their occupation, the recipients they have sponsored, and their political contribution. Instances of our model for bills include House Resolution 109, the Concealed Carry Reciprocity Act of 2017 (H.R.38), and the Consolidated Appropriations Act (H.R. 1625). Fields include bill subjects, amendments, cosponsors of the bill, and related bills.
       We will also incorporate social media such as Twitter, to allow users to search political hashtags. Our product will allow citizens and voters to have easy access to political information, thus helping them make more informed decisions in the future.
     </ng-template>
   </ngb-panel>
-  <ngb-panel title="What problems does it solve?">
+  <ngb-panel title="What problems does it solve?" id ="about-2">
     <ng-template ngbPanelContent>
       Finding unbiased trusted resources to make an informed political decision is difficult with all the information spread all over the internet. Therefore, our product will serve as a single resource that compiles data in a convenient way to inform users about US politics.
     </ng-template>
   </ngb-panel>
-  <ngb-panel title = "What alternatives are available?">
+  <ngb-panel title = "What alternatives are available?" id ="about-3">
     <ng-template ngbPanelContent>
       Websites currently exist to solve one of the subproblems that we solve, or provide for an individual use case. No competitors provide the comprehensive level of detail that our product provides. For example, ballotpedia.org gives users information regarding all candidates for a race, but provides no information regarding the candidates themselves, contributors to the candidates, or social media perception. The same analysis also applies to websites such as opensecrets.org and govtrack.us. The real advantage over competitors is that comprehensive information regarding candidates is presented in one location so that users can more easily have informed opinions regarding candidates.
     </ng-template>
   </ngb-panel>
-  <ngb-panel title = "Why is it desireable and worth developing?">
+  <ngb-panel title = "Why is it desireable and worth developing?" id = "about-4">
     <ng-template ngbPanelContent>
       The information necessary for a voter to make an informed political decision during federal elections is currently scattered across a multitude of news outlets, web-based encyclopedias, and databases with antiquated UIs. Our product is desirable because it alleviates this issue by compiling relevant information on political campaigns and elections into an easy-to-understand format with an easily-navigable user interface. This product is worth developing because many citizens, inundated with unorganized data, struggle to conduct proper research into the financials and backgrounds of political candidates. In many cases, this lack of knowledge results in uninformed voters or low voter participation during federal elections. Our product is also desirable because it allows prospective voters to not only research individual candidates/campaigns but also get an overview of a particular election as a whole, including information regarding candidates and relevant news articles.
     </ng-template>

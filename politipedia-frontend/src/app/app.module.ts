@@ -16,6 +16,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { PositionsComponent } from './positions/positions.component';
 import {RouterModule, Routes} from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { BioComponent } from './bio/bio.component';
 
 
 const appRoutes: Routes = [
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     TopdonorsComponent,
     SummaryComponent,
     PositionsComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    BioComponent
   ],
   imports: [
     RouterModule.forRoot(
