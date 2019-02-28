@@ -31,7 +31,7 @@ const appRoutes: Routes = [
   { path: 'candidate',
     component: CandidateComponent,
     data: {name: 'Placeholder candidate data'}},
-  { path: '*', component: LandingPageComponent}
+  { path: '**', component: LandingPageComponent}
   // { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -58,7 +58,9 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: false}
+      {
+        enableTracing: false,
+      }
     ),
     BrowserModule,
     NgbModule,
