@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -6,38 +6,29 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css'],
   animations: [
-    trigger('searchState', [
-      state('hasSearched', style({opacity: 0})),
-      state('freshSearch', style({opacity: 1})),
-      transition('freshSearch => hasSearched', animate('0.5s'))
+    trigger('enterScreen', [
+      transition(':enter', [style({opacity: 0}), animate('.75s', style({opacity: 1}))]),
+      transition(':leave', [style( {opacity: 1}), animate('0.5s', style({opacity: 0}))])
     ]),
-    trigger('searchMove', [
-      state('hasSearched', style({transform: 'translateY()'})),
-      state('freshSearch', style({})),
-      transition('freshSearch => hasSearched', animate('0.5s'))
-    ])
   ]
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent implements  AfterViewInit {
 
-  isFreshSearch = 'freshSearch';
-  freshSearchFormatActive = true;
-
-
+  isFreshSearch = true;
+  staleState = false;
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
   }
 
   onSearch(msg: string ) {
-    console.log(msg);
-    this.isFreshSearch = 'hasSearched';
+    this.isFreshSearch = false;
   }
 
   onAnimationFinished(event) {
-    console.log(event);
     if (event.fromState !== 'void') {
-      this.freshSearchFormatActive = false;
+      this.staleState = true;
+      console.log(this.staleState);
     }
   }
 
