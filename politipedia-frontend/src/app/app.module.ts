@@ -21,7 +21,7 @@ import { BioComponent } from './bio/bio.component';
 import { DonorComponent } from './donor/donor.component';
 import { ContributonsComponent } from './contributons/contributons.component';
 import { ElectionsMainComponent } from './elections-main/elections-main.component';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -62,7 +62,7 @@ const appRoutes: Routes = [
     NgbModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
