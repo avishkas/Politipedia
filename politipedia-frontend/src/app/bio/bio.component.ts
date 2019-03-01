@@ -31,15 +31,18 @@ export class BioComponent implements OnInit {
       this.justinCommits = data[1]["contributions"];
       this.avishkaCommits = data[0]["contributions"];
       this.ashwinCommits = data[2]["contributions"];
+      this.isabelCommits = data[3]["contributions"];
+      this.totalCommits = eval(this.justinCommits) + eval(this.avishkaCommits) + eval(this.ashwinCommits) + eval(this.isabelCommits) + eval(this.christineCommits);
     });
 
-    this.totalCommitObservables = this.httpClient.get<any>("https://api.github.com/repos/avishkas/politipedia/stats/commit_activity");
 
-    this.totalCommitObservables.subscribe((data) => {
-      for(var i=0;data.length;i++){
-        this.totalCommits += eval(data[i]["total"]);
-      }
-    })
+    //   this.totalCommitObservables = this.httpClient.get<any>("https://api.github.com/repos/avishkas/politipedia/stats/commit_activity");
+    //
+    //   this.totalCommitObservables.subscribe((data) => {
+    //     for(let i=0; data.length; i++){
+    //       this.totalCommits += eval(data[i]["total"]);
+    //     }
+    //   })
+    // }
   }
-
 }
