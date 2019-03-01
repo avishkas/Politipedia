@@ -22,3 +22,7 @@ ul{
 li{
   cursor: pointer;
 }
+
+app-elections-main{
+  width: 100%
+}
