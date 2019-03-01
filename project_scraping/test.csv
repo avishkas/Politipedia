@@ -1,0 +1,2 @@
+id, first_name, last_name, in_senate, state, gender, party, fec_candidate_id, state_rank, govtrack_id
+1, Ashwin, Gupta, true, TX, M, D, 2745734, Senior, 32874632
