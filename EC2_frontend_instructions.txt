@@ -1,0 +1,16 @@
+connect to :
+
+ec2-user@ec2-13-59-161-15.us-east-2.compute.amazonaws.com
+
+on putty
+
+use putty_key in connection > ssh > auth, then browse to select the key
+
+
+update frontend repo from git
+
+
+node server.js
+
+
+visit politipedia.tk
