@@ -14,3 +14,28 @@ node server.js
 
 
 visit politipedia.tk
+
+#####INSTALL GIT
+sudo apt install git
+
+###### INSTALL NODE
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install 10.15.1
+
+## INSTALL ANGULAR
+npm install -g @angular/cli
+npm install --save-dev @angular-devkit/build-angular
+(try if needed)
+npm update
+
+##
+npm install express
+
+npm install forever
+
+### BUILD THE FRONTEND
+ng build
+
+(try if needed)=
+ng update --all 
