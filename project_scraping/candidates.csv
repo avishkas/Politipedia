@@ -118,7 +118,7 @@ id, first_name, last_name, in_senate, state, gender, party, fec_candidate_id, st
 116, Jim, Banks, false, IN, M, R, H6IN03229, N/A, 3, 412702
 117, Lou, Barletta, false, PA, M, R, H2PA11098, N/A, 11, 412469
 118, Andy, Barr, false, KY, M, R, H0KY06104, N/A, 6, 412541
-119, Nanette, Barrag·n, false, CA, F, D, H6CA44103, N/A, 44, 412687
+119, Nanette, Barrag√°n, false, CA, F, D, H6CA44103, N/A, 44, 412687
 120, Joe, Barton, false, TX, M, R, H4TX06117, N/A, 6, 400018
 121, Karen, Bass, false, CA, F, D, H0CA33117, N/A, 37, 412404
 122, Joyce, Beatty, false, OH, F, D, H2OH03125, N/A, 3, 412565
@@ -159,13 +159,13 @@ id, first_name, last_name, in_senate, state, gender, party, fec_candidate_id, st
 157, Ken, Calvert, false, CA, M, R, H2CA37023, N/A, 42, 400057
 158, Michael, Capuano, false, MA, M, D, H8MA08071, N/A, 7, 400063
 159, Salud, Carbajal, false, CA, M, D, H6CA24303, N/A, 24, 412686
-160, Tony, C·rdenas, false, CA, M, D, H2CA28113, N/A, 29, 412517
-161, AndrÈ, Carson, false, IN, M, D, H8IN07184, N/A, 7, 412258
+160, Tony, C√°rdenas, false, CA, M, D, H2CA28113, N/A, 29, 412517
+161, Andr√©, Carson, false, IN, M, D, H8IN07184, N/A, 7, 412258
 162, John, Carter, false, TX, M, R, H2TX31044, N/A, 31, 400068
 163, Buddy, Carter, false, GA, M, R, H4GA01039, N/A, 1, 412622
 164, Matt, Cartwright, false, PA, M, D, H2PA17079, N/A, 17, 412571
 165, Kathy, Castor, false, FL, F, D, H6FL11126, N/A, 14, 412195
-166, JoaquÌn, Castro, false, TX, M, D, H2TX35011, N/A, 20, 412576
+166, Joaqu√≠n, Castro, false, TX, M, D, H2TX35011, N/A, 20, 412576
 167, Steven, Chabot, false, OH, M, R, H8OH01043, N/A, 1, 400071
 168, Jason, Chaffetz, false, UT, M, R, H8UT03089, N/A, 3, 412270
 169, Liz, Cheney, false, WY, F, R, H6WY00159, N/A, At-Large, 412732
@@ -259,7 +259,7 @@ id, first_name, last_name, in_senate, state, gender, party, fec_candidate_id, st
 257, Louie, Gohmert, false, TX, M, R, H4TX04039, N/A, 1, 400651
 258, Jimmy, Gomez, false, CA, M, D, H8CA34266, N/A, 34, 412739
 259, Vicente, Gonzalez, false, TX, M, D, H6TX15162, N/A, 15, 412725
-260, Jenniffer, Gonz·lez-ColÛn, false, PR, F, R, H6PR00082, N/A, At-Large, 412723
+260, Jenniffer, Gonz√°lez-Col√≥n, false, PR, F, R, H6PR00082, N/A, At-Large, 412723
 261, Robert, Goodlatte, false, VA, M, R, H2VA06115, N/A, 6, 400154
 262, Paul, Gosar, false, AZ, M, R, H0AZ01259, N/A, 4, 412397
 263, Josh, Gottheimer, false, NJ, M, D, H6NJ05171, N/A, 5, 412714
@@ -271,10 +271,10 @@ id, first_name, last_name, in_senate, state, gender, party, fec_candidate_id, st
 269, Al, Green, false, TX, M, D, H4TX09095, N/A, 9, 400653
 270, Gene, Green, false, TX, M, D, H2TX29030, N/A, 29, 400160
 271, Morgan, Griffith, false, VA, M, R, H0VA09055, N/A, 9, 412485
-272, Ra˙l, Grijalva, false, AZ, M, D, H2AZ07070, N/A, 3, 400162
+272, Ra√∫l, Grijalva, false, AZ, M, D, H2AZ07070, N/A, 3, 400162
 273, Glenn, Grothman, false, WI, M, R, H4WI06048, N/A, 6, 412661
 274, Brett, Guthrie, false, KY, M, R, H8KY02031, N/A, 2, 412278
-275, Luis, GutiÈrrez, false, IL, M, D, H2IL08039, N/A, 4, 400163
+275, Luis, Guti√©rrez, false, IL, M, D, H2IL08039, N/A, 4, 400163
 276, Colleen, Hanabusa, false, HI, F, D, H2HI02110, N/A, 1, 412418
 277, Karen, Handel, false, GA, F, R, H8GA06286, N/A, 6, 412737
 278, Gregg, Harper, false, MS, M, R, H8MS03067, N/A, 3, 412280
@@ -333,7 +333,7 @@ id, first_name, last_name, in_senate, state, gender, party, fec_candidate_id, st
 331, Raja, Krishnamoorthi, false, IL, M, D, H6IL08147, N/A, 8, 412701
 332, Ann, Kuster, false, NH, F, D, H0NH02181, N/A, 2, 412557
 333, David, Kustoff, false, TN, M, R, H2TN07103, N/A, 8, 412724
-334, Ra˙l, Labrador, false, ID, M, R, H0ID01253, N/A, 1, 412419
+334, Ra√∫l, Labrador, false, ID, M, R, H0ID01253, N/A, 1, 412419
 335, Darin, LaHood, false, IL, M, R, H6IL18088, N/A, 18, 412674
 336, Doug, LaMalfa, false, CA, M, R, H2CA02142, N/A, 1, 412510
 337, Conor, Lamb, false, PA, M, D, , N/A, 18, 412744
@@ -362,7 +362,7 @@ id, first_name, last_name, in_senate, state, gender, party, fec_candidate_id, st
 360, Nita, Lowey, false, NY, F, D, H8NY20056, N/A, 17, 400246
 361, Frank, Lucas, false, OK, M, R, H4OK06056, N/A, 3, 400247
 362, Blaine, Luetkemeyer, false, MO, M, R, H8MO09153, N/A, 3, 412292
-363, Ben, Luj·n, false, NM, M, D, H8NM03196, N/A, 3, 412293
+363, Ben, Luj√°n, false, NM, M, D, H8NM03196, N/A, 3, 412293
 364, Michelle, Lujan Grisham, false, NM, F, D, H8NM01257, N/A, 1, 412558
 365, Stephen, Lynch, false, MA, M, D, H2MA09072, N/A, 8, 400249
 366, Tom, MacArthur, false, NJ, M, R, H4NJ03130, N/A, 3, 412643
@@ -471,7 +471,7 @@ id, first_name, last_name, in_senate, state, gender, party, fec_candidate_id, st
 469, Tim, Ryan, false, OH, M, D, H2OH17109, N/A, 13, 400352
 470, Paul, Ryan, false, WI, M, R, H8WI01024, N/A, 1, 400351
 471, Gregorio, Sablan, false, MP, M, D, H8MP00041, N/A, At-Large, 412312
-472, Linda, S·nchez, false, CA, F, D, H2CA39078, N/A, 38, 400355
+472, Linda, S√°nchez, false, CA, F, D, H2CA39078, N/A, 38, 400355
 473, Mark, Sanford, false, SC, M, R, H4SC01073, N/A, 1, 400607
 474, John, Sarbanes, false, MD, M, D, H6MD03292, N/A, 3, 412212
 475, Steve, Scalise, false, LA, M, R, H0LA01087, N/A, 1, 412261
@@ -485,7 +485,7 @@ id, first_name, last_name, in_senate, state, gender, party, fec_candidate_id, st
 483, David, Scott, false, GA, M, D, H2GA13012, N/A, 13, 400363
 484, Robert, Scott, false, VA, M, D, H6VA01117, N/A, 3, 400364
 485, F., Sensenbrenner, false, WI, M, R, H8WI09050, N/A, 5, 400365
-486, JosÈ, Serrano, false, NY, M, D, H0NY18065, N/A, 15, 400366
+486, Jos√©, Serrano, false, NY, M, D, H0NY18065, N/A, 15, 400366
 487, Pete, Sessions, false, TX, M, R, H2TX03126, N/A, 32, 400367
 488, Terri, Sewell, false, AL, F, D, H0AL07086, N/A, 7, 412396
 489, Carol, Shea-Porter, false, NH, F, D, H6NH01230, N/A, 1, 412219
@@ -529,7 +529,7 @@ id, first_name, last_name, in_senate, state, gender, party, fec_candidate_id, st
 527, Juan, Vargas, false, CA, M, D, H2CA50026, N/A, 51, 412522
 528, Marc, Veasey, false, TX, M, D, H2TX33073, N/A, 33, 412579
 529, Filemon, Vela, false, TX, M, D, H2TX27190, N/A, 34, 412580
-530, Nydia, Vel·zquez, false, NY, F, D, H2NY00010, N/A, 7, 400416
+530, Nydia, Vel√°zquez, false, NY, F, D, H2NY00010, N/A, 7, 400416
 531, Peter, Visclosky, false, IN, M, D, H4IN01012, N/A, 1, 400417
 532, Ann, Wagner, false, MO, F, R, H2MO02102, N/A, 2, 412548
 533, Tim, Walberg, false, MI, M, R, H4MI07103, N/A, 7, 412213
