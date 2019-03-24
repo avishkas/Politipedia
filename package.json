@@ -1,0 +1,25 @@
+{
+  "name": "politipedia",
+  "version": "1.0.0",
+  "description": "This repository is for EE461L Software Lab Final Project.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avishkas/Politipedia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avishkas/Politipedia/issues"
+  },
+  "homepage": "https://github.com/avishkas/Politipedia#readme"
+}
