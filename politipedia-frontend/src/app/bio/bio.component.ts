@@ -26,12 +26,36 @@ export class BioComponent implements OnInit {
 
   ngOnInit() {
     this.gitObservables = this.httpClient.get<any>("https://api.github.com/repos/avishkas/politipedia/contributors");
-    // this.gitObservables.subscribe((data) => console.log(data));
     this.gitObservables.subscribe((data) => {
-      this.justinCommits = data[1]["contributions"];
-      this.avishkaCommits = data[0]["contributions"];
-      this.ashwinCommits = data[2]["contributions"];
-      this.isabelCommits = data[3]["contributions"];
+      for(let i=0;i<data.length;i++){
+        //Switch cases for each user
+        switch(data[i]["login"]) {
+          case "avishkas": {
+            this.avishkaCommits = data[i]["contributions"];
+            break;
+          }
+          case "JustinJChen": {
+            this.justinCommits = data[i]["contributions"];
+            break;
+          }
+          case "Shwinn": {
+            this.ashwinCommits = data[i]["contributions"];
+            break;
+          }
+          case "Yuan-Chang-UT": {
+            this.andyCommits = data[i]["contributions"];
+            break;
+          }
+          case "imabelli": {
+            this.isabelCommits = data[i]["contributions"];
+            break;
+          }
+          case "daochristine039": {
+            this.christineCommits = data[i]["contributions"];
+            break;
+          }
+        }
+      }
       this.totalCommits = eval(this.justinCommits) + eval(this.avishkaCommits) + eval(this.ashwinCommits) + eval(this.isabelCommits) + eval(this.christineCommits);
     });
 
