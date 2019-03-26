@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  dropdownSelect = "Candidate";
+  dropdownSelect = 'Candidate';
 
   @Output() searchEmitter = new EventEmitter<string>();
 
@@ -18,15 +18,15 @@ export class SearchBarComponent implements OnInit {
   }
 
   selectCandidate(){
-    this.dropdownSelect = "Candidate";
+    this.dropdownSelect = 'Candidate';
   }
 
   selectElection(){
-    this.dropdownSelect = "Election";
+    this.dropdownSelect = 'Election';
   }
 
   selectSponsor(){
-    this.dropdownSelect = "Sponsor";
+    this.dropdownSelect = 'Sponsor';
   }
 
   ngOnInit() {

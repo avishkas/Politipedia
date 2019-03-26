@@ -28,7 +28,6 @@ export class LandingPageComponent implements  AfterViewInit {
   onAnimationFinished(event) {
     if (event.fromState !== 'void') {
       this.staleState = true;
-      console.log(this.staleState);
     }
   }
 
