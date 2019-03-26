@@ -6,10 +6,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TrendingComponent } from './trending/trending.component';
-import { SearchResultsComponent } from './search-results/search-results.component';
 import { AboutComponent } from './about/about.component';
 import { TabsComponent } from './tabs/tabs.component';
-import { SearchResultsTableComponent } from './search-results-table/search-results-table.component';
 import { CandidateComponent } from './candidate/candidate.component';
 import { TopdonorsComponent } from './topdonors/topdonors.component';
 import { SummaryComponent } from './summary/summary.component';
@@ -24,6 +22,7 @@ import { ElectionsMainComponent } from './elections-main/elections-main.componen
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BillComponent } from './bill/bill.component';
+import { CandidateResultComponent } from './candidate-result/candidate-result.component';
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -33,8 +32,8 @@ const appRoutes: Routes = [
   { path: 'candidate',
     component: CandidateComponent,
     data: {name: 'Placeholder candidate data'}},
+  { path: 'candidate-result', component: CandidateResultComponent},
   { path: '**', component: LandingPageComponent}
-  // { path: '**', component: PageNotFoundComponent }
 ];
 
 
@@ -43,10 +42,8 @@ const appRoutes: Routes = [
     AppComponent,
     SearchBarComponent,
     TrendingComponent,
-    SearchResultsComponent,
     AboutComponent,
     TabsComponent,
-    SearchResultsTableComponent,
     CandidateComponent,
     TopdonorsComponent,
     SummaryComponent,
@@ -56,7 +53,8 @@ const appRoutes: Routes = [
     DonorComponent,
     ContributonsComponent,
     ElectionsMainComponent,
-    BillComponent
+    BillComponent,
+    CandidateResultComponent
   ],
   imports: [
     RouterModule.forRoot(
