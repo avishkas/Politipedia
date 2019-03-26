@@ -12,14 +12,13 @@ const mc = mysql.createConnection({
 });
 
 app.use(express.static('./Politipedia/politipedia-frontend/dist/politipedia-frontend'));
-//console.log("1");
+
 app.get('/candidate', (req, res) => {
    let candidateName = req.query['candidate-name'];
-   //console.log("2");
    if(candidateName.length > 200){
        candidateName = candidateName.substring(0, 200);
    }
-   //console.log("3");
+
    let split = candidateName.split(" ");
    let firstName = split[0];
    let lastName = "";
@@ -30,24 +29,29 @@ app.get('/candidate', (req, res) => {
            lastName += split[i] + " ";
        }
    }
-   //console.log(firstName);
-   //console.log(lastName);
 
-   let sqlQuery = "SELECT * FROM Candidate WHERE first_name=" + firstName + " AND last_name=" + lastName;
+   console.log(firstName);
+   console.log(lastName);
+
+   let sqlQuery = `SELECT * FROM Candidate WHERE first_name='${firstName}' AND last_name='${lastName}'`;
 
    //query candidate
    mc.query(sqlQuery, function (err, rows, fields) {
+       console.log(rows);
+
        if(err || rows.length > 1)
            res.status(500).send({error: "error querying database"});
 
+       let candidate_id = rows[0]["fec_candidate_id"];
 
        //get candidate_id
+       let relationshipQuery = "SELECT * FROM Bill_Candidate WHERE bill_id='" +
 
        //use it to query related bills
 
        //get list of bills
-
-       res.json(rows);
+       console.log(candidate_id);
+       res.json(candidate_id);
    });
    //query database;
 
@@ -66,8 +70,6 @@ app.get('/donor', (req, res) => {
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-
 
 
 
