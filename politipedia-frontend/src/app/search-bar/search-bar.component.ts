@@ -15,6 +15,18 @@ export class SearchBarComponent implements OnInit {
     this.searchEmitter.emit('clicked');
   }
 
+  selectCandidate(){
+    document.getElementById('dropdownBasic1').innerHTML = "Candidate";
+  }
+
+  selectElection(){
+    document.getElementById('dropdownBasic1').innerHTML = "Election";
+  }
+
+  selectSponsor(){
+    document.getElementById('dropdownBasic1').innerHTML = "Sponsor";
+  }
+
   ngOnInit() {
   }
 
