@@ -74,12 +74,22 @@ app.get('/bills', (req, res) => {
 });
 
 app.get('/donor', (req, res) => {
-
+    let donorName=req.query['donor-name'];
+    if(donorName.length > 200) {
+        donorName = donorName.substring(0,200);
+    }
+    console.log(donorName);
+    let sqlQuery = `SELECT * FROM Donor WHERE name='${donorName}'`;
+    mc.query(sqlQuery, function (err, rows, fields) {
+        console.log(rows);
+ 
+        if(err || rows.length > 1)
+            res.status(500).send({error: "error querying database"});
+        res.json(rows);
+    });
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-
 
 
 

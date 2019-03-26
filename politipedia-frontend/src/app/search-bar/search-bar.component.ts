@@ -7,6 +7,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
+  dropdownSelect = 'Candidate';
+
   @Output() searchEmitter = new EventEmitter<string>();
 
   constructor() { }
@@ -16,15 +18,15 @@ export class SearchBarComponent implements OnInit {
   }
 
   selectCandidate(){
-    document.getElementById('dropdownBasic1').innerHTML = "Candidate";
+    this.dropdownSelect = 'Candidate';
   }
 
   selectElection(){
-    document.getElementById('dropdownBasic1').innerHTML = "Election";
+    this.dropdownSelect = 'Election';
   }
 
   selectSponsor(){
-    document.getElementById('dropdownBasic1').innerHTML = "Sponsor";
+    this.dropdownSelect = 'Sponsor';
   }
 
   ngOnInit() {
