@@ -13,16 +13,37 @@ const mc = mysql.createConnection({
 
 app.use(express.static('./Politipedia/politipedia-frontend/dist/politipedia-frontend'));
 
-app.get('/callme', (req, res) => res.send('Hello World!'));
+app.get('/candidate', (req, res) => {
+   let candidateName = req.query['candidate-name'];
 
-app.get('/search/candidate', (req, res) => {
-   var candidateName = req.query['candidate-name'];
+   if(candidateName.length() > 200){
+       candidateName = candidateName.substring(0, 200);
+   }
 
-   mc.query("Select * from Candidate", function (err, rows, fields) {
+   let split = candidateName.split(" ");
+   let firstName = split[0];
+   let lastName = "";
+   for(let i = 1; i < split.length; i++){
+       if(i === split.length - 1){
+           lastName += split[i];
+       }else{
+           lastName += split[i] + " ";
+       }
+   }
 
+   let sqlQuery = "SELECT * FROM Candidate WHERE first_name=" + firstName + " AND last_name=" + lastName;
 
-       if(err)
+   //query candidate
+   mc.query(sqlQuery, function (err, rows, fields) {
+       if(err || rows.length > 1)
            res.status(500).send({error: "error querying database"});
+
+
+       //get candidate_id
+
+       //use it to query related bills
+
+       //get list of bills
 
        res.json(rows);
    });
@@ -30,15 +51,15 @@ app.get('/search/candidate', (req, res) => {
 
 });
 
-app.get('/search/elections', (req, res) => {
+app.get('/elections', (req, res) => {
     var electionYear = req.query('election-year');
 
 });
 
-app.get('/search/bills', (req, res) => {
+app.get('/bills', (req, res) => {
 });
 
-app.get('/search/donor', (req, res) => {
+app.get('/donor', (req, res) => {
 
 });
 
