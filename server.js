@@ -30,27 +30,35 @@ app.get('/candidate', (req, res) => {
        }
    }
 
-   console.log(firstName);
-   console.log(lastName);
-
    let sqlQuery = `SELECT * FROM Candidate WHERE first_name='${firstName}' AND last_name='${lastName}'`;
 
    //query candidate
    mc.query(sqlQuery, function (err, rows, fields) {
-       console.log(rows);
 
        if(err || rows.length > 1)
-           res.status(500).send({error: "error querying database"});
+           res.status(500).send({error: "error querying for candidates"});
+
+       if(rows.length === 0)
+           res.status(400).send({error: "invalid request, couldn't find matching results"});
+
 
        let candidate_id = rows[0]["fec_candidate_id"];
 
        //get candidate_id
-       let relationshipQuery = "SELECT * FROM Bill_Candidate WHERE bill_id='" +
+       let relationshipQuery = `SELECT * FROM Bill_Candidate WHERE fec_candidate_id='${candidate_id}'`;
+
+       mc.query(relationshipQuery, function(err, rows, fields){
+          if(err)
+              res.status(500).send({error: "error querying candidate relationships"})
+
+           if(rows.length === 0){
+
+           }
+       });
 
        //use it to query related bills
 
        //get list of bills
-       console.log(candidate_id);
        res.json(candidate_id);
    });
    //query database;
