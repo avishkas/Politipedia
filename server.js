@@ -3,6 +3,9 @@ const app = express();
 const port = 3000;
 
 const mysql = require('mysql');
+
+
+app.use(express.static('./politipedia-frontend/dist/politipedia-frontend'));
 // connection configurations
 const mc = mysql.createConnection({
     host     : 'mydbinstance2.c4rwwzce94u4.us-east-2.rds.amazonaws.com',
