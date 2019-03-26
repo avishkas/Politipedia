@@ -12,14 +12,14 @@ const mc = mysql.createConnection({
 });
 
 app.use(express.static('./Politipedia/politipedia-frontend/dist/politipedia-frontend'));
-
+//console.log("1");
 app.get('/candidate', (req, res) => {
    let candidateName = req.query['candidate-name'];
-
-   if(candidateName.length() > 200){
+   //console.log("2");
+   if(candidateName.length > 200){
        candidateName = candidateName.substring(0, 200);
    }
-
+   //console.log("3");
    let split = candidateName.split(" ");
    let firstName = split[0];
    let lastName = "";
@@ -30,6 +30,8 @@ app.get('/candidate', (req, res) => {
            lastName += split[i] + " ";
        }
    }
+   //console.log(firstName);
+   //console.log(lastName);
 
    let sqlQuery = "SELECT * FROM Candidate WHERE first_name=" + firstName + " AND last_name=" + lastName;
 
