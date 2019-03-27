@@ -23,6 +23,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BillComponent } from './bill/bill.component';
 import { CandidateResultComponent } from './candidate-result/candidate-result.component';
+import { ElectionResultComponentComponent } from './election-result-component/election-result-component.component';
+import { DonorResultComponent } from './donor-result/donor-result.component';
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -33,7 +35,9 @@ const appRoutes: Routes = [
     component: CandidateComponent,
     data: {name: 'Placeholder candidate data'}},
   { path: 'candidate-result', component: CandidateResultComponent},
-  { path: '**', component: LandingPageComponent}
+  { path: '**', component: LandingPageComponent},
+  { path: 'election-result', component: ElectionResultComponentComponent},
+  { path: 'donor-result', component: DonorResultComponent}
 ];
 
 
@@ -54,7 +58,9 @@ const appRoutes: Routes = [
     ContributonsComponent,
     ElectionsMainComponent,
     BillComponent,
-    CandidateResultComponent
+    CandidateResultComponent,
+    ElectionResultComponentComponent,
+    DonorResultComponent
   ],
   imports: [
     RouterModule.forRoot(
