@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-search-bar',
@@ -11,10 +12,10 @@ export class SearchBarComponent implements OnInit {
 
   @Output() searchEmitter = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   onSearch() {
-    this.searchEmitter.emit('clicked');
+    this.router.navigateByUrl('/' + this.dropdownSelect.toLowerCase() + '-result');
   }
 
   selectCandidate(){

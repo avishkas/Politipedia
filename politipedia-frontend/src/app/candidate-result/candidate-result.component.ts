@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from "rxjs";
+import { HttpClient , HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-candidate-result',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidateResultComponent implements OnInit {
 
-  constructor() { }
+  Candidate : Observable<any>;
+
+  constructor(private httpClient:HttpClient) { }
 
   ngOnInit() {
+    this.getCandidate();
   }
-
+  getCandidate(){
+    this.Candidate = this.httpClient.get<any>("/candidate/?candidate-name=Lamar+Alexander");
+    this.Candidate.subscribe((data) => {
+      console.log(data);
+    });
+  }
 }
+
+
