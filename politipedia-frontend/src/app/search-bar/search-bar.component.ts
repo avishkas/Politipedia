@@ -15,7 +15,13 @@ export class SearchBarComponent implements OnInit {
   constructor(private router: Router) { }
 
   onSearch() {
-    this.router.navigateByUrl('/' + this.dropdownSelect.toLowerCase() + '-result');
+    if (this.dropdownSelect.toLowerCase() === 'sponsor') {
+      this.router.navigateByUrl('/donor-result');
+    } else if (this.dropdownSelect.toLowerCase() === 'election') {
+      this.router.navigateByUrl('/election-result-component');
+    } else {
+      this.router.navigateByUrl('/' + this.dropdownSelect.toLowerCase() + '-result');
+    }
   }
 
   selectCandidate(){

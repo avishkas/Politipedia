@@ -35,9 +35,9 @@ const appRoutes: Routes = [
     component: CandidateComponent,
     data: {name: 'Placeholder candidate data'}},
   { path: 'candidate-result', component: CandidateResultComponent},
-  { path: '**', component: LandingPageComponent},
   { path: 'election-result', component: ElectionResultComponentComponent},
-  { path: 'donor-result', component: DonorResultComponent}
+  { path: 'donor-result', component: DonorResultComponent},
+  { path: '**', component: LandingPageComponent} //'**' indicates default
 ];
 
 

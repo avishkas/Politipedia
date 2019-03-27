@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from "rxjs";
+import { HttpClient , HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-donor-result',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonorResultComponent implements OnInit {
 
-  constructor() { }
+  Donor : Observable<any>;
+
+  constructor(private httpClient:HttpClient) { }
 
   ngOnInit() {
   }
