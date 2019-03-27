@@ -51,12 +51,13 @@ app.get('/candidate', (req, res) => {
        let relationshipQuery = `SELECT * FROM Bill_Candidate WHERE fec_candidate_id='${candidate_id}'`;
 
        mc.query(relationshipQuery, function(err, rows, fields){
-          if(err)
-              res.status(500).send({error: "error querying candidate relationships"})
+           if(err)
+              res.status(500).send({error: "error querying candidate relationships"});
 
            if(rows.length === 0){
-
+               
            }
+
        });
 
        //use it to query related bills
