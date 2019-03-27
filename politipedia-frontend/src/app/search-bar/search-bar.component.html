@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-4 offset-2 d-flex align-items-center">
-      <input type="text" class="landingSearchBar" placeholder="Search for Candidates, Elections, or Sponsors">
+      <input type="text" id = "textBox" (keyup) = "onInput($event)" class="landingSearchBar" placeholder="Search for Candidates, Elections, or Sponsors">
     </div>
     <div class="col-2 d-flex justify-content-center">
       <div ngbDropdown class="d-inline-block">
