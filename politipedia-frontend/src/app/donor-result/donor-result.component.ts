@@ -9,11 +9,17 @@ import { HttpClient , HttpHeaders} from '@angular/common/http';
 })
 export class DonorResultComponent implements OnInit {
 
-  Donor : Observable<any>;
+  Donor: Observable<any>;
+  donorName : string;
 
   constructor(private httpClient:HttpClient) { }
 
   ngOnInit() {
+    this.getUserInput();
+  }
+  getUserInput() {
+    this.donorName = sessionStorage.getItem('userInput');
+    sessionStorage.setItem('userInput', null);
   }
 
 }

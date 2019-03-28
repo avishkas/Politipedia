@@ -18,8 +18,12 @@ export class CandidateResultComponent implements OnInit {
 
 
   ngOnInit() {
-    this.candidateName = sessionStorage.getItem('candidate');
-    sessionStorage.setItem('userSearch', null);
+    this.getUserInput();
+  }
+
+  getUserInput() {
+    this.candidateName = sessionStorage.getItem('userInput');
+    sessionStorage.setItem('userInput', null);
   }
   // getCandidate() {
   //   this.Candidate = this.httpClient.get<any>("/candidate/?candidate-name=Lamar+Alexander");

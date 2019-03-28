@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ElectionResultComponentComponent implements OnInit {
 
+  electionName : string;
   constructor() { }
 
   ngOnInit() {
+    this.getUserInput();
+  }
+  getUserInput() {
+    this.electionName = sessionStorage.getItem('userInput');
+    sessionStorage.setItem('userInput', null);
   }
 
 }

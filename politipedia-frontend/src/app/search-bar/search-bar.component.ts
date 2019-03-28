@@ -18,21 +18,21 @@ export class SearchBarComponent implements OnInit {
   private GetInputService: GetInputService = new GetInputService();
 
   onSearch() {
-    this.sendMessage();
+    this.sendInput();
     this.navigateToResult();
   }
-  navigateToResult(){
+  navigateToResult() {
     if (this.dropdownSelect.toLowerCase() === 'sponsor') {
       this.router.navigateByUrl('/donor-result');
     } else if (this.dropdownSelect.toLowerCase() === 'election') {
-      this.router.navigateByUrl('/election-result-component');
+      this.router.navigateByUrl('/election-result');
     } else {
       this.router.navigateByUrl('/candidate-result');
     }
   }
 
-  sendMessage() {
-    sessionStorage.setItem('candidate', this.inputValue);
+  sendInput() {
+    sessionStorage.setItem('userInput', this.inputValue);
   }
 
   onInput(event) {
