@@ -21,10 +21,6 @@ export class LandingPageComponent implements  AfterViewInit {
   ngAfterViewInit(): void {
   }
 
-  onSearch(msg: string ) {
-    this.isFreshSearch = false;
-  }
-
   onAnimationFinished(event) {
     if (event.fromState !== 'void') {
       this.staleState = true;

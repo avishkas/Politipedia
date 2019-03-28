@@ -6,17 +6,22 @@ import {GetInputService} from '../get-input.service';
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css'],
-  providers: [GetInputService]
 })
 export class SearchBarComponent implements OnInit {
 
   dropdownSelect = 'Candidate';
   private inputValue = '';
+  message = '';
 
-  constructor(private router: Router, private GetInputService: GetInputService) { }
+  constructor(private router: Router) { }
+
+  private GetInputService: GetInputService = new GetInputService();
 
   onSearch() {
     this.sendMessage();
+    this.navigateToResult();
+  }
+  navigateToResult(){
     if (this.dropdownSelect.toLowerCase() === 'sponsor') {
       this.router.navigateByUrl('/donor-result');
     } else if (this.dropdownSelect.toLowerCase() === 'election') {
@@ -27,7 +32,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   sendMessage() {
-    this.GetInputService.sendMessage(this.inputValue);
+    sessionStorage.setItem('candidate', this.inputValue);
   }
 
   onInput(event) {

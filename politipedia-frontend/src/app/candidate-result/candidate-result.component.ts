@@ -6,21 +6,20 @@ import {GetInputService} from '../get-input.service';
 @Component({
   selector: 'app-candidate-result',
   templateUrl: './candidate-result.component.html',
-  styleUrls: ['./candidate-result.component.css'],
-  providers: [GetInputService]
+  styleUrls: ['./candidate-result.component.css']
 })
 export class CandidateResultComponent implements OnInit {
 
   candidateName: string;
-
   Candidate: Observable<any>;
 
-  constructor(private httpClient: HttpClient, private GetInputService: GetInputService) { }
+  constructor(private httpClient: HttpClient) {
+  }
+
 
   ngOnInit() {
-    this.GetInputService.currentMessage.subscribe(message => this.candidateName = message);
-    console.log(this.candidateName);
-    // this.getCandidate();
+    this.candidateName = sessionStorage.getItem('candidate');
+    sessionStorage.setItem('userSearch', null);
   }
   // getCandidate() {
   //   this.Candidate = this.httpClient.get<any>("/candidate/?candidate-name=Lamar+Alexander");

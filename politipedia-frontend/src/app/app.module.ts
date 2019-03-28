@@ -25,6 +25,7 @@ import { BillComponent } from './bill/bill.component';
 import { CandidateResultComponent } from './candidate-result/candidate-result.component';
 import { ElectionResultComponentComponent } from './election-result-component/election-result-component.component';
 import { DonorResultComponent } from './donor-result/donor-result.component';
+import {GetInputService} from "./get-input.service";
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
