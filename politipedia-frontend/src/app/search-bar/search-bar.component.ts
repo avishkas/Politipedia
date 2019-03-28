@@ -12,14 +12,13 @@ export class SearchBarComponent implements OnInit {
   dropdownSelect = 'Candidate';
   private inputValue = '';
   message = '';
+  validInput : boolean;
 
   constructor(private router: Router) { }
 
-  private GetInputService: GetInputService = new GetInputService();
 
   onSearch() {
-    this.sendInput();
-    this.navigateToResult();
+    this.isValidInput();
   }
   navigateToResult() {
     if (this.dropdownSelect.toLowerCase() === 'sponsor') {
@@ -28,6 +27,14 @@ export class SearchBarComponent implements OnInit {
       this.router.navigateByUrl('/election-result');
     } else {
       this.router.navigateByUrl('/candidate-result');
+    }
+  }
+  isValidInput(){
+    if(this.inputValue === ''){
+      document.getElementById('invalidInput').setAttribute('style', 'display: block');
+    }else{
+      this.sendInput();
+      this.navigateToResult();
     }
   }
 

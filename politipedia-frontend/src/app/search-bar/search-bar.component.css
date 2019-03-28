@@ -5,3 +5,9 @@
 #searchBtn{
   width:35%;
 }
+
+#invalidInput{
+  display : none;
+  color:red;
+}
+
