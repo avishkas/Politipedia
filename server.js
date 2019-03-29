@@ -17,11 +17,15 @@ const mc = mysql.createConnection({
 app.use(express.static('./Politipedia/politipedia-frontend/dist/politipedia-frontend'));
 
 app.get('/candidate', (req, res) => {
+    //get candidate name
    let candidateName = req.query['candidate-name'];
+
+   //limit size of user input, for security
    if(candidateName.length > 200){
        candidateName = candidateName.substring(0, 200);
    }
 
+   //parse name for first and last name
    let split = candidateName.split(" ");
    let firstName = split[0];
    let lastName = "";
@@ -33,48 +37,49 @@ app.get('/candidate', (req, res) => {
        }
    }
 
+   //create query
    let sqlQuery = `SELECT * FROM Candidate WHERE first_name='${firstName}' AND last_name='${lastName}'`;
 
-   //query candidate
+   //query database
    mc.query(sqlQuery, function (err, rows, fields) {
 
-       if(err || rows.length > 1)
+       //wdatabase error, we should log this but whatever
+       if(err)
            res.status(500).send({error: "error querying for candidates"});
 
+       //more than one candidate is queried rip
+       if(rows.length > 1)
+           res.state(500).send({error: "more than one candidate queried"});
+
+       //invalid request
        if(rows.length === 0)
            res.status(400).send({error: "invalid request, couldn't find matching results"});
 
-
-       let candidate_id = rows[0]["fec_candidate_id"];
-
-       //get candidate_id
-       let relationshipQuery = `SELECT * FROM Bill_Candidate WHERE fec_candidate_id='${candidate_id}'`;
-
-       mc.query(relationshipQuery, function(err, rows, fields){
-           if(err)
-              res.status(500).send({error: "error querying candidate relationships"});
-
-           if(rows.length === 0){
-               
-           }
-
-       });
-
-       //use it to query related bills
-
-       //get list of bills
-       res.json(candidate_id);
+       res.json(rows);
    });
    //query database;
 
 });
 
-app.get('/elections', (req, res) => {
-    var electionYear = req.query('election-year');
 
+app.get('/elections', (req, res) => {
+    let electionYear = req.query('election-year');
+    if(electionYear.length !== 4)
+        res.state(400).send({error: "Invalid year size"});
+
+    let sqlQuery = `SELECT * FROM Election WHERE year='${electionYear}'`;
+    mc.query(sqlQuery, function(err, rows, fields){
+        if(err)
+            res.state(500).send({error: "Issue Querying Database"});
+        if(rows.length === 0)
+            res.state(400).send({error: "No matched elections"});
+
+        res.json(rows);
+    });
 });
 
 app.get('/bills', (req, res) => {
+    
 });
 
 app.get('/donor', (req, res) => {
