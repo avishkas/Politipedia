@@ -12,6 +12,7 @@ export class CandidateResultComponent implements OnInit {
 
   candidateName: string;
   Candidate: Observable<any>;
+  candidateURLName: string;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -24,13 +25,9 @@ export class CandidateResultComponent implements OnInit {
   getUserInput() {
     this.candidateName = sessionStorage.getItem('userInput');
     sessionStorage.setItem('userInput', null);
+    sessionStorage.setItem('candidateName' , this.candidateName);
   }
-  // getCandidate() {
-  //   this.Candidate = this.httpClient.get<any>("/candidate/?candidate-name=Lamar+Alexander");
-  //   this.Candidate.subscribe((data) => {
-  //     console.log(data);
-  //   });
-  // }
+
 }
 
 
