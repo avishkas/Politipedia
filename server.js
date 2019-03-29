@@ -38,7 +38,7 @@ app.get('/candidate', (req, res) => {
    }
 
    //create query
-   let sqlQuery = `SELECT * FROM Candidate WHERE first_name='${firstName}' AND last_name='${lastName}'`;
+   let sqlQuery = `SELECT * FROM Bill WHERE first_name='${firstName}' AND last_name='${lastName}'`;
 
    //query database
    mc.query(sqlQuery, function (err, rows, fields) {
@@ -63,7 +63,7 @@ app.get('/candidate', (req, res) => {
 
 
 app.get('/elections', (req, res) => {
-    let electionYear = req.query('election-year');
+    let electionYear = req.query['election-year'];
     if(electionYear.length !== 4)
         res.state(400).send({error: "Invalid year size"});
 
@@ -79,7 +79,22 @@ app.get('/elections', (req, res) => {
 });
 
 app.get('/bills', (req, res) => {
-    
+    let billTitle = req.query['bill-name'];
+
+    if(billTitle.length > 200){
+        billTitle = billTitle.substring(0,200);
+    }
+
+    let sqlQuery = `SELECT * FROM Bill WHERE title='${billTitle}'`;
+
+    mc.query(sqlQuery, function(err, rows, fields){
+       if(err)
+           res.state(500).send({error: 'error querying for bills'});
+       if(rows.length == 0)
+           res.state(400).send({error: 'No bill names matched'});
+
+       res.json(rows);
+    });
 });
 
 app.get('/donor', (req, res) => {
@@ -87,7 +102,7 @@ app.get('/donor', (req, res) => {
     if(donorName.length > 200) {
         donorName = donorName.substring(0,200);
     }
-    console.log(donorName);
+
     let sqlQuery = `SELECT * FROM Donor WHERE name='${donorName}'`;
     mc.query(sqlQuery, function (err, rows, fields) {
         console.log(rows);
@@ -98,7 +113,7 @@ app.get('/donor', (req, res) => {
     });
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Politipedia backend server istening on port ${port}!`));
 
 
 
