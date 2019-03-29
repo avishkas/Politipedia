@@ -26,6 +26,7 @@ import { CandidateResultComponent } from './candidate-result/candidate-result.co
 import { ElectionResultComponentComponent } from './election-result-component/election-result-component.component';
 import { DonorResultComponent } from './donor-result/donor-result.component';
 import {GetInputService} from "./get-input.service";
+import { BillResultComponent } from './bill-result/bill-result.component';
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
   { path: 'candidate-result', component: CandidateResultComponent},
   { path: 'election-result', component: ElectionResultComponentComponent},
   { path: 'donor-result', component: DonorResultComponent},
+  { path: 'bill-result', component: BillResultComponent},
   { path: '**', component: LandingPageComponent} //'**' indicates default
 ];
 
@@ -61,7 +63,8 @@ const appRoutes: Routes = [
     BillComponent,
     CandidateResultComponent,
     ElectionResultComponentComponent,
-    DonorResultComponent
+    DonorResultComponent,
+    BillResultComponent
   ],
   imports: [
     RouterModule.forRoot(
