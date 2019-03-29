@@ -21,7 +21,7 @@ export class SearchBarComponent implements OnInit {
     this.isValidInput();
   }
   navigateToResult() {
-    if (this.dropdownSelect.toLowerCase() === 'sponsor') {
+    if (this.dropdownSelect.toLowerCase() === 'donor') {
       this.router.navigateByUrl('/donor-result');
     } else if (this.dropdownSelect.toLowerCase() === 'election') {
       this.router.navigateByUrl('/election-result');
@@ -54,8 +54,8 @@ export class SearchBarComponent implements OnInit {
     this.dropdownSelect = 'Election';
   }
 
-  selectSponsor() {
-    this.dropdownSelect = 'Sponsor';
+  selectDonor() {
+    this.dropdownSelect = 'Donor';
   }
 
   ngOnInit() {
