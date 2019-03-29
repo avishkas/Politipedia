@@ -7,7 +7,7 @@
 </div>
 <div class = "container">
   <div class = "row d-flex h-50 align-items-center justify-content-center">
-    <h1>Candidate: Donald Trump</h1>
+    <h1>Candidate: {{candidateName}}</h1>
   </div>
   <br>
   <div class = "row">
@@ -16,14 +16,22 @@
       <img src="../../assets/trump.jpg" alt="Donald Trump" class="img-fluid img-thumbnail">
     </div>
     <div class = "col-4">
-      <app-topdonors></app-topdonors>
+      <app-topdonors [listDonor]="listDonors"></app-topdonors>
     </div>
     <div class = "col-2"></div>
   </div>
   <div class = "row">
     <div class = "col-2"></div>
     <div class = "col-4">
-      <app-summary></app-summary>
+      <!--<app-summary></app-summary>-->
+      <h3>Basic Information</h3>
+      <ul>
+        <li>State : {{state}}</li>
+        <li>Gender: {{gender}}</li>
+        <li>Party: {{party}}</li>
+        <li>State Rank: {{stateRank}}</li>
+        <li>Gov Track ID: {{govtrackID}}</li>
+      </ul>
     </div>
     <div class = "col-4">
       <app-positions></app-positions>
