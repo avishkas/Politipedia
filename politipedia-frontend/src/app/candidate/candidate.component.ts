@@ -46,7 +46,7 @@ export class CandidateComponent implements OnInit {
     this.getCandidateName();
     this.getCandidateInfo();
     this.parseJSON();
-    this.getBills();
+    this.getBillPosition();
   }
   getCandidateName() {
     this.candidateName = sessionStorage.getItem('candidateName');
@@ -66,9 +66,10 @@ export class CandidateComponent implements OnInit {
     this.govtrackID = this.information.govtrack_id;
     this.listDonors = this.information.donorList;
   }
-  getBills() {
+  getBillPosition() {
     this.APIService.getCandidateBills(this.candidateName).subscribe(
       (data) => {
+        console.log(data);
         this.candidateBillPosition = data;
       },
       (err) => {
