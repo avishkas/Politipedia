@@ -33,9 +33,9 @@
     <div class = "col-4">
       <!--<app-summary></app-summary>-->
       <h3>Bill Position</h3>
-      <div *ngFor="let position of candidateBillPosition" class="card fullwidth" style="margin-top: 0.5em;">
+      <div *ngFor="let position of candidateBillPosition">
         <ul>
-          <li>{{position.billName}} : {{position.position}}</li>
+          <li>{{position.title}} : {{position.vote}}</li>
         </ul>
       </div>
     </div>

@@ -69,6 +69,7 @@ export class CandidateComponent implements OnInit {
   getBillPosition() {
     this.APIService.getCandidateBills(this.candidateName).subscribe(
       (data) => {
+        console.log(data);
         this.candidateBillPosition = data;
       },
       (err) => {
