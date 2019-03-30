@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import { HttpClient , HttpHeaders} from '@angular/common/http';
+import {ApiService} from "../api.service";
 
 @Component({
   selector: 'app-bill-result',
@@ -9,10 +10,10 @@ import { HttpClient , HttpHeaders} from '@angular/common/http';
 })
 export class BillResultComponent implements OnInit {
 
-  Bill: Observable<any>;
   BillName: string;
+  searchResults: any;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     this.getUserInput();
@@ -20,6 +21,16 @@ export class BillResultComponent implements OnInit {
   getUserInput() {
     this.BillName = sessionStorage.getItem('userInput');
     sessionStorage.setItem('userInput', null);
+
+    this.apiService.getBill(this.BillName).subscribe(
+      (data) => {
+        this.searchResults = data;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
   }
 
 }

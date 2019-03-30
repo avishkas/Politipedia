@@ -7,10 +7,13 @@
   <div class = "row justify-content-center">
     <h1>Bill Results</h1>
   </div>
-  <div class="card fullwidth">
+  <div *ngFor="let bill of searchResults" class="card fullwidth" style="margin-top: 0.5em;">
     <div class="card-body fullwidth">
       <ul>
-        <li><a routerLink="/bill">{{BillName}}</a></li>
+        <li><a routerLink="/bill">Name: {{candidate.name}}</a></li>
+        <li>{{candidate.district}}</li>
+        <li>State: {{candidate.state}}</li>
+        <li>Party: {{candidate.party}}</li>
       </ul>
     </div>
   </div>

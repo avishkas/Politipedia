@@ -31,10 +31,10 @@ export class CandidateResultComponent implements OnInit {
     this.apiService.getCandidates(this.searchQuery).subscribe(
     (data) => {
       this.searchResults = data;
-      for(let i = 0; i < this.searchResults.length; i++){
-        if(this.searchResults[i].district === ''){
+      for (let i = 0; i < this.searchResults.length; i++){
+        if (this.searchResults[i].district === ''){
           this.searchResults[i].district = "Senate";
-        }else{
+        } else{
           this.searchResults[i].district = "House of Representatives";
         }
       }
