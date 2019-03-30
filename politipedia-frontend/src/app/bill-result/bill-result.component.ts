@@ -13,11 +13,13 @@ export class BillResultComponent implements OnInit {
   BillName: string;
   searchResults: any;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {
+  }
 
   ngOnInit() {
     this.getUserInput();
   }
+
   getUserInput() {
     this.BillName = sessionStorage.getItem('userInput');
     sessionStorage.setItem('userInput', null);
@@ -31,6 +33,7 @@ export class BillResultComponent implements OnInit {
       }
     );
   }
+  sendName(name: string){
+    sessionStorage.setItem('billName', name);
   }
-
 }

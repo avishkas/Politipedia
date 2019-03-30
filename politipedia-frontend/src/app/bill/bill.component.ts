@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillComponent implements OnInit {
 
+  billName: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.getBillName();
+  }
+
+  getBillName(){
+    this.billName = sessionStorage.getItem('billName');
   }
 
 }
