@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonorComponent implements OnInit {
 
+  donorName: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.getDonorName();
+  }
+  getDonorName(){
+    this.donorName = sessionStorage.getItem('donorName');
   }
 
 }

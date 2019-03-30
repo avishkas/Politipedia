@@ -5,14 +5,15 @@
     </div>
   </div>
   <div class = "row justify-content-center">
-    <h1>Election Results</h1>
+    <h1>{{electionYear}} Election Results</h1>
   </div>
-  <div class="card fullwidth">
+  <div *ngFor="let position of searchResults" class="card fullwidth" style="margin-top: 0.5em;">
     <div class="card-body fullwidth">
       <ul>
-        <li>{{electionName}}</li>
+        <li>Race: {{position.race}}</li>
+        <li>Incumbent: <a (click)="sendName(position.incumbent)" routerLink="/candidate">{{position.incumbent}}</a></li>
+        <li>Winner: <a (click)="sendName(position.winner)" routerLink="/candidate">{{position.winner}}</a></li>
       </ul>
-      <app-elections-main></app-elections-main>
     </div>
   </div>
 </div>

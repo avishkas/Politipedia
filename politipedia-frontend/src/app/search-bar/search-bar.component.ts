@@ -41,7 +41,18 @@ export class SearchBarComponent implements OnInit {
   }
 
   sendInput() {
-    sessionStorage.setItem('userInput', this.inputValue);
+    if(this.dropdownSelect === 'Candidate') {
+      sessionStorage.setItem('candidateName', this.inputValue);
+    }
+    if(this.dropdownSelect === 'Election') {
+      sessionStorage.setItem('electionYear', this.inputValue);
+    }
+    if(this.dropdownSelect === 'Donor') {
+      sessionStorage.setItem('donorName', this.inputValue);
+    }
+    else{
+      sessionStorage.setItem('billName', this.inputValue);
+    }
   }
 
   onInput(event) {

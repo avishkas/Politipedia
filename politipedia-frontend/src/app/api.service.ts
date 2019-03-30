@@ -16,4 +16,11 @@ export class ApiService {
     return this.http.get('/donor', {params: {'donor-name': donorName}});
   }
 
+  getElection(electionYear: string){
+    return this.http.get('/elections/', {params: {'election-year': electionYear}});
+  }
+  getBill(billName: string){
+    return this.http.get('/bills/', {params: {'bill-name': billName}});
+  }
+
 }

@@ -22,19 +22,19 @@ export class CandidateComponent implements OnInit {
   govtrackID: string;
 
   information = {
-      first_name: 'Donald',
-      last_name: 'Trump',
+      first_name: 'John',
+      last_name: 'Doe',
       in_senate: false,
-      state: 'Texas',
-      gender: 'Male',
-      party: 'Republican',
+      state: 'Temp',
+      gender: 'Temp',
+      party: 'Temp',
       fec_candidate_id: '123456',
-      state_rank: 'President',
+      state_rank: 'Temp',
       govtrack_id: '123456',
       donorList: [
-        'Renaissance Technologies',
-        'McMahon Ventures',
-        'Walt Disney Co'
+        'Donor 1',
+        'Donor 2',
+        'Donor 3'
       ]
     };
 
@@ -47,13 +47,13 @@ export class CandidateComponent implements OnInit {
   }
   getCandidateName() {
     this.candidateName = sessionStorage.getItem('candidateName');
-    sessionStorage.setItem('candidateName', null);
   }
   getCandidateInfo() {
     this.candidateURLName = this.candidateName.split(' ').join('+');
-    // this.Candidate = this.httpClient.get<any>('/candidate/?candidate-name=' + this.candidateURLName);
-    // this.Candidate.subscribe((data) => {
-    // });
+    this.Candidate = this.httpClient.get<any>('/candidate/?candidate-name=' + this.candidateURLName);
+    this.Candidate.subscribe((data) => {
+      console.log(data);
+    });
   }
   parseJSON() {
     this.state = this.information.state;

@@ -19,8 +19,7 @@ export class DonorResultComponent implements OnInit {
     this.getUserInput();
   }
   getUserInput() {
-    this.donorQueryName = sessionStorage.getItem('userInput');
-    sessionStorage.setItem('userInput', null);
+    this.donorQueryName = sessionStorage.getItem('donorName');
 
     this.apiService.getDonors(this.donorQueryName).subscribe(
       (data) => {

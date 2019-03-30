@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from "../api.service";
 
 @Component({
   selector: 'app-election-result-component',
@@ -7,15 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ElectionResultComponentComponent implements OnInit {
 
-  electionName : string;
-  constructor() { }
+  electionYear: string;
+  searchResults: any;
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     this.getUserInput();
   }
   getUserInput() {
-    this.electionName = sessionStorage.getItem('userInput');
-    sessionStorage.setItem('userInput', null);
+    this.electionYear = sessionStorage.getItem('electionYear');
+
+    this.apiService.getElection(this.electionYear).subscribe(
+      (data) => {
+        this.searchResults = data;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  sendName(name: string) {
+    sessionStorage.setItem('candidateName', name);
   }
 
 }
