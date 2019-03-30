@@ -12,6 +12,7 @@ export class BillResultComponent implements OnInit {
 
   BillName: string;
   searchResults: any;
+  validEntry: boolean;
 
   constructor(private apiService: ApiService) {
   }
@@ -25,9 +26,11 @@ export class BillResultComponent implements OnInit {
 
     this.apiService.getBill(this.BillName).subscribe(
       (data) => {
+        this.validEntry = true;
         this.searchResults = data;
       },
       (err) => {
+        this.validEntry = false;
         console.log(err);
       }
     );

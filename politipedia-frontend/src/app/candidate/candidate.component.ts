@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {ApiService} from "../api.service";
 
 @Component({
   selector: 'app-candidate',
@@ -20,6 +21,7 @@ export class CandidateComponent implements OnInit {
   party: string;
   stateRank: string;
   govtrackID: string;
+  candidateBillPosition: any;
 
   information = {
       first_name: 'John',
@@ -38,12 +40,13 @@ export class CandidateComponent implements OnInit {
       ]
     };
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private APIService: ApiService) { }
 
   ngOnInit() {
     this.getCandidateName();
     this.getCandidateInfo();
     this.parseJSON();
+    this.getBillPosition();
   }
   getCandidateName() {
     this.candidateName = sessionStorage.getItem('candidateName');
@@ -62,6 +65,15 @@ export class CandidateComponent implements OnInit {
     this.stateRank = this.information.state_rank;
     this.govtrackID = this.information.govtrack_id;
     this.listDonors = this.information.donorList;
+  }
+  getBillPosition() {
+    this.APIService.getCandidateBills(this.candidateName).subscribe(
+      (data) => {
+        this.candidateBillPosition = data;
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 
 }

@@ -12,8 +12,10 @@ export class DonorResultComponent implements OnInit {
 
   donorData: any;
   donorQueryName : string;
+  validEntry: boolean;
 
-  constructor(private apiService:ApiService) { }
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     this.getUserInput();
@@ -23,10 +25,12 @@ export class DonorResultComponent implements OnInit {
 
     this.apiService.getDonors(this.donorQueryName).subscribe(
       (data) => {
+        this.validEntry = true;
         this.donorData = data;
       },
       (err) => {
-
+        this.validEntry = false;
+        console.log(err);
       }
     );
   }
