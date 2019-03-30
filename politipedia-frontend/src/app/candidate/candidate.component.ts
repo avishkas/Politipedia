@@ -47,7 +47,6 @@ export class CandidateComponent implements OnInit {
   }
   getCandidateName() {
     this.candidateName = sessionStorage.getItem('candidateName');
-    sessionStorage.setItem('candidateName', null);
   }
   getCandidateInfo() {
     this.candidateURLName = this.candidateName.split(' ').join('+');

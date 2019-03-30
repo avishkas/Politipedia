@@ -21,8 +21,7 @@ export class BillResultComponent implements OnInit {
   }
 
   getUserInput() {
-    this.BillName = sessionStorage.getItem('userInput');
-    sessionStorage.setItem('userInput', null);
+    this.BillName = sessionStorage.getItem('billName');
 
     this.apiService.getBill(this.BillName).subscribe(
       (data) => {

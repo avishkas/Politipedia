@@ -24,9 +24,9 @@ export class CandidateResultComponent implements OnInit {
   }
 
   getUserInput() {
-    this.searchQuery = sessionStorage.getItem('userInput');
-    sessionStorage.setItem('userInput', null);
-    sessionStorage.setItem('candidateName' , this.searchQuery);
+    this.searchQuery = sessionStorage.getItem('candidateName');
+    // sessionStorage.setItem('userInput', null);
+    // sessionStorage.setItem('candidateName' , this.searchQuery);
 
     this.apiService.getCandidates(this.searchQuery).subscribe(
     (data) => {

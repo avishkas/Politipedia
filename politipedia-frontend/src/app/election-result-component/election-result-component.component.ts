@@ -16,8 +16,7 @@ export class ElectionResultComponentComponent implements OnInit {
     this.getUserInput();
   }
   getUserInput() {
-    this.electionYear = sessionStorage.getItem('userInput');
-    sessionStorage.setItem('userInput', null);
+    this.electionYear = sessionStorage.getItem('electionYear');
 
     this.apiService.getElection(this.electionYear).subscribe(
       (data) => {
