@@ -12,4 +12,8 @@ export class ApiService {
     return this.http.get('/candidate', {params: {'candidate-name': candidateName}});
   }
 
+  getDonors(donorName: string){
+    return this.http.get('/donor', {params: {'donor-name': donorName}});
+  }
+
 }

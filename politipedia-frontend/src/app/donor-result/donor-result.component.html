@@ -1,5 +1,5 @@
-<div class="container-fluid justify-content-center">
-  <div class="row h-50 align-items-center justify-content-center">
+<div class="container justify-content-center">
+  <div class="row align-items-center justify-content-center">
     <div class="col-12 justify-content-center">
       <span routerLink="/" class="badge badge-pill badge-secondary">Home</span>
     </div>
@@ -7,10 +7,16 @@
   <div class = "row justify-content-center">
     <h1>Donor Results</h1>
   </div>
-  <div class="card fullwidth">
+  <div class ="row">
+    <input class="form-control" type="text" placeholder="{{donorQueryName}}" readonly>
+  </div>
+  <div *ngFor="let donor of donorData" class="card fullwidth">
     <div class="card-body fullwidth">
       <ul>
-        <li> <a routerLink="/donor">{{donorName}}</a></li>
+        <li><a routerLink="/donor">Name: {{donor.name}}</a></li>
+        <li>Contribution: {{donor.contribution}}</li>
+        <li>Election Year: {{donor.election_year}}</li>
+        <li>Committee ID: {{donor.committee_id}}</li>
       </ul>
     </div>
   </div>

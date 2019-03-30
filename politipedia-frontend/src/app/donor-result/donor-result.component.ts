@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import { HttpClient , HttpHeaders} from '@angular/common/http';
+import {ApiService} from "../api.service";
 
 @Component({
   selector: 'app-donor-result',
@@ -9,17 +10,26 @@ import { HttpClient , HttpHeaders} from '@angular/common/http';
 })
 export class DonorResultComponent implements OnInit {
 
-  Donor: Observable<any>;
-  donorName : string;
+  donorData: any;
+  donorQueryName : string;
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private apiService:ApiService) { }
 
   ngOnInit() {
     this.getUserInput();
   }
   getUserInput() {
-    this.donorName = sessionStorage.getItem('userInput');
+    this.donorQueryName = sessionStorage.getItem('userInput');
     sessionStorage.setItem('userInput', null);
+
+    this.apiService.getDonors(this.donorQueryName).subscribe(
+      (data) => {
+        this.donorData = data;
+      },
+      (err) => {
+
+      }
+    );
   }
 
 }
