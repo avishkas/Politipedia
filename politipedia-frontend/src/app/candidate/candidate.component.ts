@@ -25,16 +25,16 @@ export class CandidateComponent implements OnInit {
       first_name: 'John',
       last_name: 'Doe',
       in_senate: false,
-      state: 'Texas',
-      gender: 'Male',
-      party: 'Republican',
+      state: 'Temp',
+      gender: 'Temp',
+      party: 'Temp',
       fec_candidate_id: '123456',
-      state_rank: 'President',
+      state_rank: 'Temp',
       govtrack_id: '123456',
       donorList: [
-        'Renaissance Technologies',
-        'McMahon Ventures',
-        'Walt Disney Co'
+        'Donor 1',
+        'Donor 2',
+        'Donor 3'
       ]
     };
 
