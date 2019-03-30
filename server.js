@@ -25,37 +25,25 @@ app.get('/candidate', (req, res) => {
        candidateName = candidateName.substring(0, 200);
    }
 
-   //parse name for first and last name
-   let split = candidateName.split(" ");
-   let firstName = split[0];
-   let lastName = "";
-   for(let i = 1; i < split.length; i++){
-       if(i === split.length - 1){
-           lastName += split[i];
-       }else{
-           lastName += split[i] + " ";
-       }
-   }
-
    //create query
-   let sqlQuery = `SELECT * FROM Bill WHERE first_name='${firstName}' AND last_name='${lastName}'`;
+   let sqlQuery = `SELECT * FROM Candidate WHERE name='${candidateName}'`;
 
    //query database
    mc.query(sqlQuery, function (err, rows, fields) {
-
        //wdatabase error, we should log this but whatever
        if(err)
            res.status(500).send({error: "error querying for candidates"});
 
        //more than one candidate is queried rip
-       if(rows.length > 1)
+       else if(rows.length > 1)
            res.state(500).send({error: "more than one candidate queried"});
 
        //invalid request
-       if(rows.length === 0)
+       else if(rows.length === 0)
            res.status(400).send({error: "invalid request, couldn't find matching results"});
 
-       res.json(rows);
+       else
+           res.json(rows);
    });
    //query database;
 
@@ -71,10 +59,11 @@ app.get('/elections', (req, res) => {
     mc.query(sqlQuery, function(err, rows, fields){
         if(err)
             res.state(500).send({error: "Issue Querying Database"});
-        if(rows.length === 0)
+        else if(rows.length === 0)
             res.state(400).send({error: "No matched elections"});
 
-        res.json(rows);
+        else
+            res.json(rows);
     });
 });
 
@@ -90,10 +79,10 @@ app.get('/bills', (req, res) => {
     mc.query(sqlQuery, function(err, rows, fields){
        if(err)
            res.state(500).send({error: 'error querying for bills'});
-       if(rows.length == 0)
+       else if(rows.length === 0)
            res.state(400).send({error: 'No bill names matched'});
-
-       res.json(rows);
+       else
+           res.json(rows);
     });
 });
 
@@ -105,11 +94,11 @@ app.get('/donor', (req, res) => {
 
     let sqlQuery = `SELECT * FROM Donor WHERE name='${donorName}'`;
     mc.query(sqlQuery, function (err, rows, fields) {
-        console.log(rows);
  
         if(err || rows.length > 1)
             res.status(500).send({error: "error querying database"});
-        res.json(rows);
+        else
+            res.json(rows);
     });
 });
 

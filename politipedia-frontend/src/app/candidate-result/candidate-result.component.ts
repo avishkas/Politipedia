@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import { HttpClient , HttpHeaders} from '@angular/common/http';
+import {ApiService} from "../api.service";
 import {GetInputService} from '../get-input.service';
 
 @Component({
@@ -10,12 +11,12 @@ import {GetInputService} from '../get-input.service';
 })
 export class CandidateResultComponent implements OnInit {
 
-  candidateName: string;
-  Candidate: Observable<any>;
+  searchQuery: string;
   candidateURLName: string;
+  searchResults: any;
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private apiService: ApiService) {}
+
 
 
   ngOnInit() {
@@ -23,9 +24,25 @@ export class CandidateResultComponent implements OnInit {
   }
 
   getUserInput() {
-    this.candidateName = sessionStorage.getItem('userInput');
+    this.searchQuery = sessionStorage.getItem('userInput');
     sessionStorage.setItem('userInput', null);
-    sessionStorage.setItem('candidateName' , this.candidateName);
+    sessionStorage.setItem('candidateName' , this.searchQuery);
+
+    this.apiService.getCandidates(this.searchQuery).subscribe(
+    (data) => {
+      this.searchResults = data;
+      for(let i = 0; i < this.searchResults.length; i++){
+        if(this.searchResults[i].district === ''){
+          this.searchResults[i].district = "Senate";
+        }else{
+          this.searchResults[i].district = "House of Representatives";
+        }
+      }
+    },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
 }
