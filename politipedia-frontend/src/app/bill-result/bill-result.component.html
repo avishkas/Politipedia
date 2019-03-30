@@ -7,14 +7,23 @@
   <div class = "row justify-content-center">
     <h1>Bill Results</h1>
   </div>
-  <div *ngFor="let bill of searchResults" class="card fullwidth" style="margin-top: 0.5em;">
-    <div class="card-body fullwidth">
-      <ul>
-        <li><a (click)="sendName(bill.title)" routerLink="/bill">Name: {{bill.title}}</a></li>
-        <li>Sponsor Name: {{bill.sponsor_name}}</li>
-        <li>Introduced Date: {{bill.introduced_date}}</li>
-        <li>Status: {{bill.status}}</li>
-      </ul>
+  <div *ngIf="validEntry; else elseBlock">
+    <div *ngFor="let bill of searchResults" class="card fullwidth" style="margin-top: 0.5em;">
+      <div class="card-body fullwidth">
+        <ul>
+          <li><a (click)="sendName(bill.title)" routerLink="/bill">Name: {{bill.title}}</a></li>
+          <li>Sponsor Name: {{bill.sponsor_name}}</li>
+          <li>Introduced Date: {{bill.introduced_date}}</li>
+          <li>Status: {{bill.status}}</li>
+        </ul>
+      </div>
     </div>
   </div>
+  <ng-template #elseBlock>
+    <div class="card fullwidth" style="margin-top: 0.5em;">
+      <div class="card-body fullwidth">
+        <p>Invalid Entry</p>
+      </div>
+    </div>
+  </ng-template>
 </div>

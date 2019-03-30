@@ -10,14 +10,23 @@
   <!--<div class ="row">-->
     <!--<input class="form-control" type="text" placeholder="{{donorQueryName}}" readonly>-->
   <!--</div>-->
-  <div *ngFor="let donor of donorData" class="card fullwidth">
-    <div class="card-body fullwidth">
-      <ul>
-        <li><a routerLink="/donor">Name: {{donor.name}}</a></li>
-        <li>Contribution: {{donor.contribution}}</li>
-        <li>Election Year: {{donor.election_year}}</li>
-        <li>Committee ID: {{donor.committee_id}}</li>
-      </ul>
+  <div *ngIf="validEntry; else elseBlock">
+    <div *ngFor="let donor of donorData" class="card fullwidth">
+      <div class="card-body fullwidth">
+        <ul>
+          <li><a routerLink="/donor">Name: {{donor.name}}</a></li>
+          <li>Contribution: {{donor.contribution}}</li>
+          <li>Election Year: {{donor.election_year}}</li>
+          <li>Committee ID: {{donor.committee_id}}</li>
+        </ul>
+      </div>
     </div>
   </div>
+  <ng-template #elseBlock>
+    <div class="card fullwidth" style="margin-top: 0.5em;">
+      <div class="card-body fullwidth">
+        <p>Invalid Entry</p>
+      </div>
+    </div>
+  </ng-template>
 </div>

@@ -13,7 +13,13 @@
   <div class = "row">
     <div class = "col-2"></div>
     <div class = "col-4">
-      <img src="../../assets/trump.jpg" alt="Donald Trump" class="img-fluid img-thumbnail">
+      <h3>Bill Position</h3>
+        <div *ngFor="let position of candidateBillPosition" class="card fullwidth" style="margin-top: 0.5em;">
+            <ul>
+              <li>{{position.billName}} + {{position.position}}}}</li>
+            </ul>
+        </div>
+      <!--<img src="../../assets/trump.jpg" alt="Donald Trump" class="img-fluid img-thumbnail">-->
     </div>
     <div class = "col-4">
       <app-topdonors [listDonor]="listDonors"></app-topdonors>

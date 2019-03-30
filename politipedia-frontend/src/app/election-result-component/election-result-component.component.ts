@@ -10,6 +10,8 @@ export class ElectionResultComponentComponent implements OnInit {
 
   electionYear: string;
   searchResults: any;
+  validEntry: boolean;
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
@@ -20,9 +22,11 @@ export class ElectionResultComponentComponent implements OnInit {
 
     this.apiService.getElection(this.electionYear).subscribe(
       (data) => {
+        this.validEntry = true;
         this.searchResults = data;
       },
       (err) => {
+        this.validEntry = false;
         console.log(err);
       }
     );
@@ -30,5 +34,6 @@ export class ElectionResultComponentComponent implements OnInit {
   sendName(name: string) {
     sessionStorage.setItem('candidateName', name);
   }
+
 
 }
