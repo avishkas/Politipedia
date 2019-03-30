@@ -1,0 +1,101 @@
+id,person,state,district,vote,name,party
+0,300002,TN,,Nay,Lamar Alexander,Republican
+1,300018,WA,,Yea,Maria Cantwell,Democrat
+2,300019,DE,,Yea,Thomas Carper,Democrat
+3,300025,ME,,Yea,Susan Collins,Republican
+4,300027,TX,,Nay,John Cornyn,Republican
+5,300030,ID,,Nay,Michael Crapo,Republican
+6,300038,IL,,Yea,Richard Durbin,Democrat
+7,300041,WY,,Nay,Michael Enzi,Republican
+8,300043,CA,,Yea,Dianne Feinstein,Democrat
+9,300047,SC,,Nay,Lindsey Graham,Republican
+10,300048,IA,,Nay,Charles “Chuck” Grassley,Republican
+11,300055,OK,,Nay,James “Jim” Inhofe,Republican
+12,300065,VT,,Yea,Patrick Leahy,Democrat
+13,300072,KY,,Nay,Mitch McConnell,Republican
+14,300075,AK,,Yea,Lisa Murkowski,Republican
+15,300076,WA,,Yea,Patty Murray,Democrat
+16,300081,RI,,Yea,John “Jack” Reed,Democrat
+17,300083,KS,,Nay,Pat Roberts,Republican
+18,300087,NY,,Yea,Charles “Chuck” Schumer,Democrat
+19,300089,AL,,Nay,Richard Shelby,Republican
+20,300093,MI,,Yea,Debbie Stabenow,Democrat
+21,300100,OR,,Yea,Ron Wyden,Democrat
+22,400013,WI,,Yea,Tammy Baldwin,Democrat
+23,400032,TN,,Nay,Marsha Blackburn,Republican
+24,400034,MO,,Nay,Roy Blunt,Republican
+25,400040,AR,,Nay,John Boozman,Republican
+26,400050,OH,,Yea,Sherrod Brown,Democrat
+27,400054,NC,,Nay,Richard Burr,Republican
+28,400061,WV,,Nay,Shelley Capito,Republican
+29,400064,MD,,Yea,Benjamin Cardin,Democrat
+30,400194,GA,,Nay,John “Johnny” Isakson,Republican
+31,400253,MA,,Yea,Edward “Ed” Markey,Democrat
+32,400272,NJ,,Yea,Robert “Bob” Menendez,Democrat
+33,400284,KS,,Yea,Jerry Moran,Republican
+34,400325,OH,,Nay,Robert “Rob” Portman,Republican
+35,400357,VT,,Yea,Bernard “Bernie” Sanders,Independent
+36,400408,PA,,Nay,Patrick “Pat” Toomey,Republican
+37,400413,NM,,Yea,Tom Udall,Democrat
+38,400415,MD,,Yea,Chris Van Hollen Jr.,Democrat
+39,400432,MS,,Nay,Roger Wicker,Republican
+40,400546,SD,,Nay,John Thune,Republican
+41,412194,CT,,Yea,Christopher Murphy,Democrat
+42,412200,HI,,Yea,Mazie Hirono,Democrat
+43,412223,NY,,Yea,Kirsten Gillibrand,Democrat
+44,412242,MN,,Yea,Amy Klobuchar,Democrat
+45,412244,MT,,Yea,Jon Tester,Democrat
+46,412246,PA,,Yea,Robert “Bob” Casey Jr.,Democrat
+47,412247,RI,,Yea,Sheldon Whitehouse,Democrat
+48,412251,WY,,Nay,John Barrasso,Republican
+49,412269,LA,,Nay,Bill Cassidy,Republican
+50,412281,NM,,Yea,Martin Heinrich,Democrat
+51,412305,MI,,Yea,Gary Peters,Democrat
+52,412321,VA,,Yea,Mark Warner,Democrat
+53,412322,ID,,Nay,James Risch,Republican
+54,412323,NH,,Yea,Jeanne Shaheen,Democrat
+55,412325,OR,,Yea,Jeff Merkley,Democrat
+56,412330,CO,,Yea,Michael Bennet,Democrat
+57,412390,DE,,Yea,Chris Coons,Democrat
+58,412391,WV,,Yea,Joe Manchin III,Democrat
+59,412406,CO,,Nay,Cory Gardner,Republican
+60,412428,IN,,Yea,Todd Young,Republican
+61,412464,OK,,Nay,James Lankford,Republican
+62,412471,SC,,Nay,Tim Scott,Republican
+63,412490,CT,,Yea,Richard Blumenthal,Democrat
+64,412491,FL,,Nay,Marco Rubio,Republican
+65,412492,KY,,Yea,Rand Paul,Republican
+66,412494,ND,,Nay,John Hoeven,Republican
+67,412495,UT,,Yea,Mike Lee,Republican
+68,412496,WI,,Nay,Ron Johnson,Republican
+69,412507,HI,,Yea,Brian Schatz,Democrat
+70,412508,AR,,Nay,Tom Cotton,Republican
+71,412509,AZ,,Yea,Kyrsten Sinema,Democrat
+72,412533,IL,,Yea,Tammy Duckworth,Democrat
+73,412542,MA,,Yea,Elizabeth Warren,Democrat
+74,412545,ME,,Yea,Angus King,Independent
+75,412549,MT,,Yea,Steve Daines,Republican
+76,412555,ND,,Nay,Kevin Cramer,Republican
+77,412556,NE,,Nay,Deb Fischer,Republican
+78,412573,TX,,Nay,Ted Cruz,Republican
+79,412582,VA,,Yea,Timothy “Tim” Kaine,Democrat
+80,412598,NJ,,Yea,Cory Booker,Democrat
+81,412611,AZ,,Nay,Martha McSally,Republican
+82,412665,AK,,Nay,Dan Sullivan,Republican
+83,412666,GA,,Nay,David Perdue,Republican
+84,412667,IA,,Nay,Joni Ernst,Republican
+85,412668,NC,,Nay,Thom Tillis,Republican
+86,412669,SD,,Nay,Mike Rounds,Republican
+87,412671,NE,,Nay,Benjamin Sasse,Republican
+88,412678,CA,,Yea,Kamala Harris,Democrat
+89,412679,LA,,Nay,John Kennedy,Republican
+90,412680,NH,,Yea,Margaret “Maggie” Hassan,Democrat
+91,412681,NV,,Yea,Catherine Cortez Masto,Democrat
+92,412715,NV,,Yea,Jacky Rosen,Democrat
+93,412741,AL,,Yea,Doug Jones,Democrat
+94,412742,MN,,Yea,Tina Smith,Democrat
+95,412743,MS,,Nay,Cindy Hyde-Smith,Republican
+96,412838,FL,,Nay,Rick Scott,Republican
+97,412839,IN,,Nay,Mike Braun,Republican
+98,412840,MO,,Nay,Joshua Hawley,Republican
+99,412841,UT,,Nay,Mitt Romney,Republican
