@@ -10,14 +10,23 @@
   <!--<div class ="row">-->
     <!--<input class="form-control" type="text" placeholder="{{searchQuery}}" readonly>-->
   <!--</div>-->
-  <div *ngFor="let candidate of searchResults" class="card fullwidth" style="margin-top: 0.5em;">
-    <div class="card-body fullwidth">
-      <ul>
-        <li><a routerLink="/candidate">Name: {{candidate.name}}</a></li>
-        <li>{{candidate.district}}</li>
-        <li>State: {{candidate.state}}</li>
-        <li>Party: {{candidate.party}}</li>
-      </ul>
+  <div *ngIf="validEntry; else elseBlock">
+    <div *ngFor="let candidate of searchResults" class="card fullwidth" style="margin-top: 0.5em;">
+      <div class="card-body fullwidth">
+        <ul>
+          <li><a routerLink="/candidate">Name: {{candidate.name}}</a></li>
+          <li>{{candidate.district}}</li>
+          <li>State: {{candidate.state}}</li>
+          <li>Party: {{candidate.party}}</li>
+        </ul>
+      </div>
     </div>
   </div>
+  <ng-template #elseBlock>
+    <div class="card fullwidth" style="margin-top: 0.5em;">
+      <div class="card-body fullwidth">
+        <p>Invalid Entry</p>
+      </div>
+    </div>
+  </ng-template>
 </div>
