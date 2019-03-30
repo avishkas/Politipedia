@@ -19,7 +19,7 @@ app.use(express.static('./Politipedia/politipedia-frontend/dist/politipedia-fron
 app.get('/candidate', (req, res) => {
     //get candidate name
    let candidateName = req.query['candidate-name'];
-
+   
    //limit size of user input, for security
    if(candidateName.length > 200){
        candidateName = candidateName.substring(0, 200);
@@ -27,7 +27,7 @@ app.get('/candidate', (req, res) => {
 
    //create query
    let sqlQuery = `SELECT * FROM Candidate WHERE name='${candidateName}'`;
-
+   
    //query database
    mc.query(sqlQuery, function (err, rows, fields) {
        //wdatabase error, we should log this but whatever
@@ -96,9 +96,10 @@ app.get('/donor', (req, res) => {
 
     let sqlQuery = `SELECT * FROM Donor WHERE name='${donorName}'`;
     mc.query(sqlQuery, function (err, rows, fields) {
- 
-        if(err || rows.length > 1)
-            res.status(500).send({error: "error querying database"});
+        if(err)
+            res.status(500).send({error: 'error querying for donors'});
+        else if(rows.length == 0)
+            res.status(400).send({error: 'No donor names matched'});
         else
             res.json(rows);
     });
