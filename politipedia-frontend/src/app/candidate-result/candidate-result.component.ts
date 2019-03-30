@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import { HttpClient , HttpHeaders} from '@angular/common/http';
 import {ApiService} from "../api.service";
 import {GetInputService} from '../get-input.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-candidate-result',
@@ -14,8 +15,9 @@ export class CandidateResultComponent implements OnInit {
   searchQuery: string;
   candidateURLName: string;
   searchResults: any;
+  validEntry: boolean;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
 
 
@@ -30,6 +32,7 @@ export class CandidateResultComponent implements OnInit {
 
     this.apiService.getCandidates(this.searchQuery).subscribe(
     (data) => {
+      this.validEntry = true;
       this.searchResults = data;
       for (let i = 0; i < this.searchResults.length; i++){
         if (this.searchResults[i].district === ''){
@@ -40,6 +43,7 @@ export class CandidateResultComponent implements OnInit {
       }
     },
       (err) => {
+        this.validEntry = false;
         console.log(err);
       }
     );

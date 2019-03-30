@@ -14,7 +14,7 @@ export class DonorComponent implements OnInit {
   ngOnInit() {
     this.getDonorName();
   }
-  getDonorName(){
+  getDonorName() {
     this.donorName = sessionStorage.getItem('donorName');
   }
 
