@@ -33,9 +33,11 @@ for row in senate.find_all("tr")[2::]:
         f_row = f_row + cols[1].contents[3].contents[0] + ", "
 
     try:
-        f_row = f_row + cols[2].contents[2].contents[0] + "\n"
+        f_row = f_row + cols[2].contents[2].contents[0] + ", "
     except:
-        f_row = f_row + cols[2].contents[3].contents[0] + "\n"
+        f_row = f_row + cols[2].contents[3].contents[0] + ", "
+		
+    f_row = f_row + "2018\n"
 
     print(f_row)
     f.write(f_row)
@@ -56,13 +58,15 @@ for row in house.find_all("tr")[2::]:
         f_row = f_row + cols[1].contents[3].contents[0] + ", "
 
     try:
-        f_row = f_row + cols[2].contents[2].contents[0] + "\n"
+        f_row = f_row + cols[2].contents[2].contents[0] + ", "
     except:
         try:
-            f_row = f_row + cols[2].contents[3].contents[0] + "\n"
+            f_row = f_row + cols[2].contents[3].contents[0] + ", "
         except:
             continue
 
+    f_row = f_row + "2018\n"
+	
     print(f_row)
     f.write(f_row)
 
