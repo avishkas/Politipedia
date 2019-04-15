@@ -1,4 +1,5 @@
 const express = require('express');
+const request = require('request');
 const app = express();
 const port = 3000;
 
@@ -31,6 +32,23 @@ app.get('/candidateBill', (req, res) => {
         }       
         });
     });
+
+app.get('/getImage', (req, res) => {
+   let searchQuery = req.query['candidate-name'];
+
+   request(`https://www.googleapis.com/customsearch/v1?key=AIzaSyC4-42oOJdkIChQmdo55Bcc3vPxMXQvhbg&cx=008888073625839535765:fv2e5qldhui&q=${searchQuery}&imgSize=large&imgType=face&num=1&searchType=image`, function(error, response, body){
+       res.setHeader('Content-Type', 'application/json');
+       if(error == null && response.statusCode === 200){
+           let jsonBody = JSON.parse(body);
+           res.send(jsonBody["items"][0]["link"]);
+       }else{
+           res.send(body);
+       }
+   });
+
+});
+
+
 
 app.get('/candidate', (req, res) => {
     //get candidate name
