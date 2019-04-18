@@ -60,17 +60,13 @@ app.get('/candidate', (req, res) => {
    }
 
    //create query
-   let sqlQuery = `SELECT * FROM Candidate WHERE name='${candidateName}'`;
+   let sqlQuery = `SELECT * FROM Candidate WHERE name LIKE '%${candidateName}%'`;
    
    //query database
    mc.query(sqlQuery, function (err, rows, fields) {
        //wdatabase error, we should log this but whatever
        if(err)
            res.status(500).send({error: "error querying for candidates"});
-
-       //more than one candidate is queried rip
-       else if(rows.length > 1)
-           res.status(500).send({error: "more than one candidate queried"});
 
        //invalid request
        else if(rows.length === 0)
@@ -110,7 +106,7 @@ app.get('/bills', (req, res) => {
         billTitle = billTitle.substring(0,200);
     }
 
-    let sqlQuery = `SELECT * FROM Bill WHERE title='${billTitle}'`;
+    let sqlQuery = `SELECT * FROM Bill WHERE title LIKE '%${billTitle}%'`;
 
     mc.query(sqlQuery, function(err, rows, fields){
        if(err)
