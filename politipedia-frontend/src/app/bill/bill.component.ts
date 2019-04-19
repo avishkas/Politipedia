@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class BillComponent implements OnInit {
 
   billName: string;
+  billStatus: string;
+  billIntroducedDate: string;
+  billSponsor: string;
 
   constructor() { }
 
@@ -16,6 +19,9 @@ export class BillComponent implements OnInit {
   }
 
   getBillName(){
-    this.billName = sessionStorage.getItem('billName');
+    this.billName = sessionStorage.getItem('bill_title');
+    this.billStatus = sessionStorage.getItem('bill_status');
+    this.billIntroducedDate = sessionStorage.getItem('bill_introduced_date');
+    this.billSponsor = sessionStorage.getItem('bill_sponsor');
   }
 }

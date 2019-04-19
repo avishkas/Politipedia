@@ -11,7 +11,7 @@
     <div *ngFor="let bill of searchResults" class="card fullwidth" style="margin-top: 0.5em;">
       <div class="card-body fullwidth">
         <ul>
-          <li><a (click)="sendName(bill.title)" routerLink="/bill">Name: {{bill.title}}</a></li>
+          <li><a (click)="sendName(bill)" routerLink="/bill">Name: {{bill.title}}</a></li>
         </ul>
       </div>
     </div>
