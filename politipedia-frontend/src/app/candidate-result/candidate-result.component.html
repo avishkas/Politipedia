@@ -14,7 +14,7 @@
     <div *ngFor="let candidate of searchResults" class="card fullwidth" style="margin-top: 0.5em;">
       <div class="card-body fullwidth">
         <ul>
-          <li><a routerLink="/candidate">Name: {{candidate.name}}</a></li>
+          <li><a (click) = "sendName(candidate.name)" routerLink="/candidate">Name: {{candidate.name}}</a></li>
           <li>{{candidate.district}}</li>
           <li>State: {{candidate.state}}</li>
           <li>Party: {{candidate.party}}</li>

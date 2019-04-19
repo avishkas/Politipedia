@@ -26,5 +26,4 @@ export class BillComponent implements OnInit {
     this.billIntroducedDate = sessionStorage.getItem('bill_introduced_date');
     this.billSponsor = sessionStorage.getItem('bill_sponsor');
   }
-
 }
