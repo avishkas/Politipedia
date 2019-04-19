@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ApiService} from "../api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-candidate',
@@ -20,7 +21,7 @@ export class CandidateComponent implements OnInit {
   candidateBillPosition: any;
   imageURL: string;
 
-  constructor(private httpClient: HttpClient, private APIService: ApiService) { }
+  constructor(private httpClient: HttpClient, private APIService: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.getCandidateName();
@@ -58,6 +59,16 @@ export class CandidateComponent implements OnInit {
       (err) => {
         console.log(err);
       });
+  }
+  sendBillInformation(name: string) {
+    this.APIService.getBill(name).subscribe(
+      (data) => {
+        sessionStorage.setItem('bill_title', data[0].title);
+        sessionStorage.setItem('bill_introduced_date', data[0].introduced_date);
+        sessionStorage.setItem('bill_status', data[0].status);
+        sessionStorage.setItem('bill_sponsor', data[0].sponsor_name);
+      }
+    );
   }
 
 }
