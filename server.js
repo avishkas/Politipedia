@@ -32,6 +32,10 @@ app.get('/candidateBill', (req, res) => {
         }       
         });
     });
+app.get('/bill-candidate', (req, res) =>{
+   let billName = req.query['billName'];
+
+});
 
 app.get('/getImage', (req, res) => {
    let searchQuery = req.query['candidate-name'];
@@ -40,9 +44,11 @@ app.get('/getImage', (req, res) => {
        res.setHeader('Content-Type', 'application/json');
        if(error == null && response.statusCode === 200){
            let jsonBody = JSON.parse(body);
-           res.send(jsonBody["items"][0]["link"]);
+           let img = [jsonBody["items"][0]["link"]];
+           res.send(JSON.stringify(img));
        }else{
-           res.send(body);
+           let err = {err: body};
+           res.send(JSON.stringify(err));
        }
    });
 
