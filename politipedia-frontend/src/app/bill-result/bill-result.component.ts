@@ -10,7 +10,7 @@ import {ApiService} from "../api.service";
 })
 export class BillResultComponent implements OnInit {
 
-  BillName: string;
+  billName: string;
   searchResults: any;
   validEntry: boolean;
 
@@ -22,12 +22,13 @@ export class BillResultComponent implements OnInit {
   }
 
   getUserInput() {
-    this.BillName = sessionStorage.getItem('billName');
+    this.billName = sessionStorage.getItem('billName');
 
-    this.apiService.getBill(this.BillName).subscribe(
+    this.apiService.getBill(this.billName).subscribe(
       (data) => {
         this.validEntry = true;
         this.searchResults = data;
+        console.log(data);
       },
       (err) => {
         this.validEntry = false;
@@ -35,7 +36,11 @@ export class BillResultComponent implements OnInit {
       }
     );
   }
-  sendName(name: string){
-    sessionStorage.setItem('billName', name);
+  sendName(bill: any){
+    console.log(bill);
+    sessionStorage.setItem('bill_title', bill.title);
+    sessionStorage.setItem('bill_introduced_date', bill.introduced_date);
+    sessionStorage.setItem('bill_status', bill.status);
+    sessionStorage.setItem('bill_sponsor', bill.sponsor_name);
   }
 }
