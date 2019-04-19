@@ -18,5 +18,4 @@ export class BillComponent implements OnInit {
   getBillName(){
     this.billName = sessionStorage.getItem('billName');
   }
-
 }
