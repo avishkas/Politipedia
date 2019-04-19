@@ -13,17 +13,8 @@
   <div class = "row">
     <div class = "col-2"></div>
     <div class = "col-4">
-      <h3>Basic Information</h3>
-      <ul>
-        <li>State : {{state}}</li>
-        <li>Gender: {{gender}}</li>
-        <li>Party: {{party}}</li>
-        <li>State Rank: {{stateRank}}</li>
-        <li>Gov Track ID: {{govtrackID}}</li>
-      </ul>
-      <!--<img src="../../assets/trump.jpg" alt="Donald Trump" class="img-fluid img-thumbnail">-->
-    </div>
-    <div class = "col-4">
+      <img [src] = "imageURL" alt="Candidate Image" class="img-fluid img-thumbnail">
+      <div class = "col-4">
       <app-topdonors [listDonor]="listDonors"></app-topdonors>
     </div>
     <div class = "col-2"></div>
@@ -40,7 +31,13 @@
       </div>
     </div>
     <div class = "col-4">
-      <app-positions></app-positions>
+      <h3>Basic Information</h3>
+      <ul>
+        <li>State : {{state}}</li>
+        <li>Party: {{party}}</li>
+        <li>District: {{district}}</li>
+      </ul>
+    </div>
     </div>
     <div class = "col-2"></div>
   </div>
