@@ -25,8 +25,10 @@ export class ApiService {
   getCandidateBills(candidateName: string) {
     return this.http.get('/candidateBill/', {params: {'candidate-name': candidateName}});
   }
-  getBillCandidate(billId: string){
+  getBillCandidate(billId: string) {
     return this.http.get('/billCandidate', {params: {'bill-id': billId}});
   }
-
+  getImage(name: string){
+    return this.http.get('/getImage/', {params: {'candidate-name': name}});
+  }
 }
