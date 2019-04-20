@@ -38,6 +38,7 @@ export class BillResultComponent implements OnInit {
   }
   sendName(bill: any){
     console.log(bill);
+    sessionStorage.setItem('bill_id', bill.id);
     sessionStorage.setItem('bill_title', bill.title);
     sessionStorage.setItem('bill_introduced_date', bill.introduced_date);
     sessionStorage.setItem('bill_status', bill.status);

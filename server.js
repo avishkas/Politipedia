@@ -16,6 +16,7 @@ const mc = mysql.createConnection({
 });
 
 app.use(express.static('./Politipedia/politipedia-frontend/dist/politipedia-frontend'));
+
 app.get('/candidateBill', (req, res) => {
     let candidateName = req.query['candidate-name'];
     if (candidateName.length > 200) {
@@ -32,9 +33,22 @@ app.get('/candidateBill', (req, res) => {
         }       
         });
     });
-app.get('/bill-candidate', (req, res) =>{
-   let billName = req.query['billName'];
 
+app.get('/billCandidate', (req, res) =>{
+   let billId = req.query['bill-id'];
+   console.log(billId);
+   let sqlQuery = `SELECT * FROM (SELECT * FROM CandidateBillVote WHERE bill_id=${billId}) temp INNER JOIN Candidate ON temp.candidate_id = Candidate.person`;
+   mc.query(sqlQuery, function(err, rows, fields){
+      if(err) {
+          console.log(err);
+          res.status(500).send({error: "error querying candidates and bills"});
+      }
+      else if (rows.length == 0){
+          res.status(400).send({error: "invalid request, couldn't find matching results"});
+      }else{
+          res.json(rows);
+      }
+   });
 });
 
 app.get('/getImage', (req, res) => {
