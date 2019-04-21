@@ -61,14 +61,16 @@ export class CandidateComponent implements OnInit {
       });
   }
   sendBillInformation(name: string) {
-    this.APIService.getBill(name).subscribe(
-      (data) => {
-        sessionStorage.setItem('bill_title', data[0].title);
-        sessionStorage.setItem('bill_introduced_date', data[0].introduced_date);
-        sessionStorage.setItem('bill_status', data[0].status);
-        sessionStorage.setItem('bill_sponsor', data[0].sponsor_name);
-      }
-    );
+    // this.APIService.getBill(name).subscribe(
+    //   (data) => {
+    //     console.log(data[0]);
+    //     sessionStorage.setItem('bill_title', data[0].title);
+    //     sessionStorage.setItem('bill_introduced_date', data[0].introduced_date);
+    //     sessionStorage.setItem('bill_status', data[0].status);
+    //     sessionStorage.setItem('bill_sponsor', data[0].sponsor_name);
+    //   }
+    // );
+    sessionStorage.setItem('billName', name);
   }
 
 }
