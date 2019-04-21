@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class CandidateComponent implements OnInit {
 
   candidateName: string;
+  candidateTwitter: string;
   candidateURLName: string;
   Candidate: Observable<any>;
   listDonors: string[];
@@ -28,7 +29,18 @@ export class CandidateComponent implements OnInit {
     this.getCandidateInfo();
     this.getBillPosition();
     this.getImage();
+    this.getCandidateTwitter();
   }
+
+  getCandidateTwitter() {
+    this.APIService.getTwitter(this.candidateName).subscribe(
+      (data) => {
+        console.log(data);
+        this.candidateTwitter = data[0];
+      }
+    );
+  }
+
   getImage() {
     this.APIService.getImage(this.candidateName).subscribe(
       (data) => {
@@ -37,9 +49,11 @@ export class CandidateComponent implements OnInit {
       }
     );
   }
+
   getCandidateName() {
     this.candidateName = sessionStorage.getItem('candidateName');
   }
+
   getCandidateInfo() {
     this.candidateURLName = this.candidateName.split(' ').join('+');
     this.Candidate = this.httpClient.get<any>('/candidate/?candidate-name=' + this.candidateURLName);

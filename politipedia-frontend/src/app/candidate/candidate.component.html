@@ -54,6 +54,15 @@
     <!--<li>{{position.title}} : {{position.vote}}</li>-->
     <!--</ul>-->
   </div>
+  <div class = "row">
+    <h3>Twitter</h3>
+
+    <ngx-twitter-timeline
+      [data]="{sourceType: 'url', url: 'https://twitter.com/'+candidateTwitter}"
+      [opts]="{tweetLimit: 5}"
+    ></ngx-twitter-timeline>
+
+  </div>
   <div class = "col-2"></div>
 </div>
 

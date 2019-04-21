@@ -26,6 +26,9 @@ import { ElectionResultComponentComponent } from './election-result-component/el
 import { DonorResultComponent } from './donor-result/donor-result.component';
 import { BillResultComponent } from './bill-result/bill-result.component';
 
+// Import ngx-twitter-timeline
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
+
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'bill', component: BillComponent},
@@ -73,7 +76,9 @@ const appRoutes: Routes = [
     BrowserModule,
     NgbModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    // Specify library as an import
+    NgxTwitterTimelineModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
