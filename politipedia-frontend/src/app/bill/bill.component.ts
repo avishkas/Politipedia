@@ -55,6 +55,9 @@ export class BillComponent implements OnInit {
       }
     );
   }
+  sendCandidateName(name: string){
+    sessionStorage.setItem('candidateName', name);
+  }
 
 
 }
