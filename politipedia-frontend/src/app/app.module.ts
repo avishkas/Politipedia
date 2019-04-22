@@ -11,7 +11,6 @@ import { TabsComponent } from './tabs/tabs.component';
 import { CandidateComponent } from './candidate/candidate.component';
 import { TopdonorsComponent } from './topdonors/topdonors.component';
 import { SummaryComponent } from './summary/summary.component';
-import { PositionsComponent } from './positions/positions.component';
 import { RouterModule, Routes} from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,8 +24,10 @@ import { BillComponent } from './bill/bill.component';
 import { CandidateResultComponent } from './candidate-result/candidate-result.component';
 import { ElectionResultComponentComponent } from './election-result-component/election-result-component.component';
 import { DonorResultComponent } from './donor-result/donor-result.component';
-import {GetInputService} from "./get-input.service";
 import { BillResultComponent } from './bill-result/bill-result.component';
+
+// Import ngx-twitter-timeline
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -54,7 +55,6 @@ const appRoutes: Routes = [
     CandidateComponent,
     TopdonorsComponent,
     SummaryComponent,
-    PositionsComponent,
     LandingPageComponent,
     BioComponent,
     DonorComponent,
@@ -76,7 +76,9 @@ const appRoutes: Routes = [
     BrowserModule,
     NgbModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    // Specify library as an import
+    NgxTwitterTimelineModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

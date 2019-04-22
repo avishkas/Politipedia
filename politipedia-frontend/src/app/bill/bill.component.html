@@ -1,41 +1,75 @@
 <div class="container-fluid justify-content-center">
   <div class="row d-flex h-25" >
     <div class="offset-1 col-2 d-flex justify-content-center align-items-center">
-      <span routerLink="/" class="badge badge-pill badge-secondary">Home</span>
+
     </div>
   </div>
 </div>
 <div class = "container">
-  <div class = "row d-flex h-50 align-items-center justify-content-center">
-    <h1>{{billName}}</h1>
+  <div class = "row d-flex h-50 align-items-center">
+    <div class= "col-2">
+      <span routerLink="/" class="badge badge-pill badge-secondary">Home</span>
+    </div>
+    <div class="col-8 d-flex justify-content-center">
+      <h1>{{billName}}</h1>
+    </div>
   </div>
   <br>
-  <div class = "row">
-    <div class = "col-2"></div>
-    <div class = "col-4">
-      <img src="../../assets/bill.jpg" alt="Bills" class="img-fluid img-thumbnail">
+  <div class = "row justify-content-center">
+    <div class="col-offset-2 col-4">
+      <h3>Summary</h3>
+      <p>{{billSummary}}</p>
     </div>
-    <div class = "col-4">
+    <div class="col-4">
       <h3>Bill Information</h3>
       <ul>
-        <li>Bill Sponsor: </li>
-        <li>Introduce Date: </li>
-        <li>Status: </li>
+        <li>Bill Sponsor: {{billSponsor}}</li>
+        <li>Introduce Date: {{billIntroducedDate}}</li>
+        <li>Status: {{billStatus}}</li>
       </ul>
     </div>
-    <div class = "col-2"></div>
   </div>
-  <div class = "row">
-    <div class = "col-2"></div>
-    <div class = "col-4">
-      <h3>Summary</h3>
-      <p>Insert Summary</p>
+  <div class = "row justify-content-center">
+    <div class="col-offset-2 col-8">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">State</th>
+            <th score="col">Party</th>
+            <th scope="col">Position</th>
+            <th scope="col">Vote</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let candidate of candidateObservable | async">
+            <td>
+              <a (click) = "sendCandidateName(candidate.name)" routerLink="/candidate">
+              {{candidate.name}}
+              </a>
+            </td>
+            <td>
+              {{candidate.state}}
+            </td>
+            <td>
+              {{candidate.party}}
+            </td>
+            <td>
+              <div *ngIf="candidate.district == ''; else hor">
+                Senate
+              </div>
+              <ng-template #hor>
+                H.O.R
+              </ng-template>
+            </td>
+            <td>
+              {{candidate.vote}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class = "col-4">
-      <h3>GovTrack Link</h3>
-      <!--<a href = "https://www.govtrack.us/congress/bills/116/hr1" target="_blank">H.R. 1: For the People Act of 2019</a>-->
-    </div>
-    <div class = "col-2"></div>
   </div>
 </div>
 

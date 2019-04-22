@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from "../api.service";
 
 @Component({
   selector: 'app-donor',
@@ -8,11 +9,21 @@ import { Component, OnInit } from '@angular/core';
 export class DonorComponent implements OnInit {
 
   donorName: string;
+  imageURL: string;
 
-  constructor() { }
+  constructor(private APIService: ApiService) {}
 
   ngOnInit() {
     this.getDonorName();
+    this.getImage();
+  }
+  getImage() {
+    this.APIService.getImage(this.donorName).subscribe(
+      (data) => {
+        console.log(data);
+        this.imageURL = data[0];
+      }
+    );
   }
   getDonorName() {
     this.donorName = sessionStorage.getItem('donorName');

@@ -11,38 +11,57 @@
   </div>
   <br>
   <div class = "row">
-    <div class = "col-2"></div>
-    <div class = "col-4">
+    <div class = "col-3"></div>
+    <div class = "col-6">
+      <img [src] = "imageURL" alt="Candidate Image" class="img-fluid img-thumbnail">
+    </div>
+    <div class = "col-3"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-3"></div>
+    <div class = "col-3">
       <h3>Basic Information</h3>
       <ul>
         <li>State : {{state}}</li>
-        <li>Gender: {{gender}}</li>
         <li>Party: {{party}}</li>
-        <li>State Rank: {{stateRank}}</li>
-        <li>Gov Track ID: {{govtrackID}}</li>
+        <li>District: {{district}}</li>
       </ul>
-      <!--<img src="../../assets/trump.jpg" alt="Donald Trump" class="img-fluid img-thumbnail">-->
     </div>
-    <div class = "col-4">
+    <div class = "col-3">
       <app-topdonors [listDonor]="listDonors"></app-topdonors>
     </div>
-    <div class = "col-2"></div>
+    <div class = "col-3"></div>
+    </div>
+  <div class = "row">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope = "col"></th>
+        <th scope = "col">Bill Name</th>
+        <th scope = "col">Vote</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let position of candidateBillPosition">
+          <th scope = "row"></th>
+          <td><a (click) = "sendBillInformation(position.title)" routerLink="/bill">{{position.title}}</a></td>
+          <td>{{position.vote}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!--<ul>-->
+    <!--<li>{{position.title}} : {{position.vote}}</li>-->
+    <!--</ul>-->
   </div>
   <div class = "row">
-    <div class = "col-2"></div>
-    <div class = "col-4">
-      <!--<app-summary></app-summary>-->
-      <h3>Bill Position</h3>
-      <div *ngFor="let position of candidateBillPosition">
-        <ul>
-          <li>{{position.title}} : {{position.vote}}</li>
-        </ul>
-      </div>
-    </div>
-    <div class = "col-4">
-      <app-positions></app-positions>
-    </div>
-    <div class = "col-2"></div>
+    <h3>Twitter</h3>
+
+    <ngx-twitter-timeline
+      [data]="{sourceType: 'url', url: 'https://twitter.com/'+candidateTwitter}"
+      [opts]="{tweetLimit: 5}"
+    ></ngx-twitter-timeline>
+
   </div>
+  <div class = "col-2"></div>
 </div>
 

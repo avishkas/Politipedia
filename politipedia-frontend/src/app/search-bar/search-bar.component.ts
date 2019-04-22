@@ -12,7 +12,7 @@ export class SearchBarComponent implements OnInit {
   dropdownSelect = 'Candidate';
   private inputValue = '';
   message = '';
-  validInput : boolean;
+  validInput: boolean;
 
   constructor(private router: Router) { }
 
@@ -32,9 +32,9 @@ export class SearchBarComponent implements OnInit {
     }
   }
   isValidInput(){
-    if(this.inputValue === ''){
+    if (this.inputValue === '') {
       document.getElementById('invalidInput').setAttribute('style', 'display: block');
-    }else{
+    } else {
       this.sendInput();
       this.navigateToResult();
     }
@@ -42,7 +42,7 @@ export class SearchBarComponent implements OnInit {
 
   sendInput() {
     if(this.dropdownSelect === 'Candidate') {
-      sessionStorage.setItem('candidateName', this.inputValue);
+      sessionStorage.setItem('searchCandidateName', this.inputValue);
     }
     if(this.dropdownSelect === 'Election') {
       sessionStorage.setItem('electionYear', this.inputValue);
