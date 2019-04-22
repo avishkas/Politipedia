@@ -90,9 +90,9 @@ app.get('/getTwitter', (req, res) => {
     };
     var success = function (data) {
        // console.log('Data [%s]', data);
-        res.status(200)
+        res.status(200);
 
-        jsondata = JSON.parse(data)
+        jsondata = JSON.parse(data);
 
         res.send(JSON.stringify([jsondata[0]['screen_name']]));
     };
@@ -194,14 +194,24 @@ app.get('/donor', (req, res) => {
         donorName = donorName.substring(0,200);
     }
 
-    let sqlQuery = `SELECT * FROM Donor WHERE name='${donorName}'`;
+    let sqlQuery = `SELECT Contribution.donor FROM Contribution WHERE donor LIKE '%${donorName}%'`;
     mc.query(sqlQuery, function (err, rows, fields) {
+        res.setHeader('Content-Type', 'application/json');
         if(err)
             res.status(500).send({error: 'error querying for donors'});
         else if(rows.length == 0)
             res.status(400).send({error: 'No donor names matched'});
-        else
-            res.json(rows);
+        else {
+            let toReturn = [];
+            let seenDonorNames = new Set();
+            for(let i = 0; i < rows.length; i++){
+                if(!seenDonorNames.has(rows[i]["donor"])){
+                    seenDonorNames.add(rows[i]["donor"]);
+                    toReturn.push({"name": rows[i]["donor"]});
+                }
+            }
+            res.json(toReturn);
+        }
     });
 });
 
