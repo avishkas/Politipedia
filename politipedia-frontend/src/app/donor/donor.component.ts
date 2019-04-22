@@ -39,7 +39,7 @@ export class DonorComponent implements OnInit {
     );
   }
   sendCandidateInformation(name: string) {
-    sessionStorage.set('candidateName', name);
+    sessionStorage.setItem('candidateName', name);
   }
 
 }

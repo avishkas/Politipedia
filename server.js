@@ -188,6 +188,23 @@ app.get('/contribution', (req, res) => {
     });
 });
 
+app.get('/contributorsGivenCandidate', (req, res) => {
+    let candidateName=req.query['candidate-name'];
+    if(candidateName.length > 200) {
+        candidateName = candidateName.substring(0,200);
+    }
+    //console.log(candidateName);
+    let sqlQuery = `SELECT * FROM Contribution WHERE name='${candidateName}'`;
+    mc.query(sqlQuery, function (err, rows, fields) {
+        if(err)
+            res.status(500).send({error: 'error querying for contributors given candidate name'});
+        else if(rows.length == 0)
+            res.status(400).send({error: 'No candidate names names matched'});
+        else
+            res.json(rows);
+    });
+});
+
 app.get('/donor', (req, res) => {
     let donorName=req.query['donor-name'];
     if(donorName.length > 200) {
