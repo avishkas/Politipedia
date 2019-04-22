@@ -13,7 +13,7 @@
   <div *ngIf="validEntry; else elseBlock">
     <div *ngFor="let donor of donorData" class="card fullwidth">
       <div class="card-body fullwidth">
-        <a routerLink="/donor">{{donor.name}}</a>
+        <a (click) = "sendName(donor.name)" routerLink="/donor">{{donor.name}}</a>
       </div>
     </div>
   </div>
