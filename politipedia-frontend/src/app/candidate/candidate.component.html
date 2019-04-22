@@ -18,20 +18,42 @@
     <div class = "col-3"></div>
   </div>
   <div class = "row">
-    <div class = "col-3"></div>
-    <div class = "col-3">
+    <!--<div class = "col-3"></div>-->
+    <div class = "col-6">
       <h3>Basic Information</h3>
-      <ul>
-        <li>State : {{state}}</li>
-        <li>Party: {{party}}</li>
-        <li>District: {{district}}</li>
-      </ul>
+      <!--<ul>-->
+        <!--<li>State : {{state}}</li>-->
+        <!--<li>Party: {{party}}</li>-->
+        <!--<li>District: {{district}}</li>-->
+      <!--</ul>-->
+      <table class = "table table-striped">
+        <thead class = "thead-dark">
+          <tr>
+            <th scope = "col">Basic</th>
+            <th scope = "col">Information</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope = "row">State</th>
+          <td>{{state}}</td>
+        </tr>
+        <tr>
+          <th scope = "row">Party</th>
+          <td>{{party}}</td>
+        </tr>
+        <tr>
+          <th scope = "row">District</th>
+          <td>{{district}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-    <div class = "col-3">
+    <div class = "col-6">
       <app-topdonors [listDonor]="listDonors"></app-topdonors>
     </div>
-    <div class = "col-3"></div>
-    </div>
+    <!--<div class = "col-3"></div>-->
+  </div>
   <div class = "row">
     <table class="table table-striped">
       <thead class="thead-dark">

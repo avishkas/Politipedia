@@ -10,7 +10,7 @@ export class DonorComponent implements OnInit {
 
   donorName: string;
   imageURL: string;
-  contributionAmount: string;
+  contributions: any;
 
   constructor(private APIService: ApiService) {}
 
@@ -31,12 +31,15 @@ export class DonorComponent implements OnInit {
     this.donorName = sessionStorage.getItem('donorName');
   }
   getDonorInfo() {
-    this.APIService.getDonors(this.donorName).subscribe(
+    this.APIService.getContribution(this.donorName).subscribe(
       (data) => {
         console.log(data);
-        this.contributionAmount = data[0].contribution;
+        this.contributions = data;
       }
     );
+  }
+  sendCandidateInformation(name: string) {
+    sessionStorage.setItem('candidateName', name);
   }
 
 }

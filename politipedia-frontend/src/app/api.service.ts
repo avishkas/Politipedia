@@ -34,4 +34,7 @@ export class ApiService {
   getTwitter(name: string) {
     return this.http.get('/getTwitter/', {params: {'query-string': name}});
   }
+  getContribution(name: string) {
+    return this.http.get('/contribution/',{params: {'donor-name': name}});
+  }
 }
