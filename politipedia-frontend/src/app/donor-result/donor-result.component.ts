@@ -34,5 +34,8 @@ export class DonorResultComponent implements OnInit {
       }
     );
   }
+  sendName(name: string) {
+    sessionStorage.setItem('donorName', name);
+  }
 
 }

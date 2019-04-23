@@ -5,6 +5,17 @@ const port = 3000;
 
 const mysql = require('mysql');
 
+var Twitter = require('twitter-node-client').Twitter;
+
+var config = {
+    "consumerKey": "rsM8Uj6SV4F8BZJyxWhyGU7Yu",
+    "consumerSecret": "Fw4M7s7GrsXjgQMp1PIN13z19KHYFVuMm5yh2QBDH1UFOJ36vP",
+    "accessToken": "1120055016906285057-eQxPz5VoB91xYQhDgIkBgRlS8D3M0C",
+    "accessTokenSecret": "nAEdgJpexImPexdcnRwa6RLVBF8TJsuKfEvZLYMtsRPKz",
+    "callBackUrl": "http://localtest.me"
+}
+
+var twitter = new Twitter(config);
 
 app.use(express.static('./politipedia-frontend/dist/politipedia-frontend'));
 // connection configurations
@@ -66,6 +77,28 @@ app.get('/getImage', (req, res) => {
        }
    });
 
+});
+
+app.get('/getTwitter', (req, res) => {
+
+    let searchQuery = req.query['query-string'];
+
+    //Callback functions
+    var error = function (err, response, body) {
+        console.log('ERROR [%s]', err);
+        res.status(400).send({error: "error querying for candidate twitter"});
+    };
+    var success = function (data) {
+       // console.log('Data [%s]', data);
+        res.status(200)
+
+        jsondata = JSON.parse(data)
+
+        res.send(JSON.stringify([jsondata[0]['screen_name']]));
+    };
+
+
+    twitter.getCustomApiCall('/users/search.json',{'q': searchQuery, 'page': 1, 'count': 1}, error, success);
 });
 
 
@@ -135,6 +168,40 @@ app.get('/bills', (req, res) => {
            res.status(400).send({error: 'No bill names matched'});
        else
            res.json(rows);
+    });
+});
+
+app.get('/contribution', (req, res) => {
+    let donorName=req.query['donor-name'];
+    if(donorName.length > 200) {
+        donorName = donorName.substring(0,200);
+    }
+
+    let sqlQuery = `SELECT * FROM Contribution WHERE donor='${donorName}'`;
+    mc.query(sqlQuery, function (err, rows, fields) {
+        if(err)
+            res.status(500).send({error: 'error querying for donors'});
+        else if(rows.length == 0)
+            res.status(400).send({error: 'No donor names matched'});
+        else
+            res.json(rows);
+    });
+});
+
+app.get('/contributorsGivenCandidate', (req, res) => {
+    let candidateName=req.query['candidate-name'];
+    if(candidateName.length > 200) {
+        candidateName = candidateName.substring(0,200);
+    }
+    //console.log(candidateName);
+    let sqlQuery = `SELECT * FROM Contribution WHERE name='${candidateName}'`;
+    mc.query(sqlQuery, function (err, rows, fields) {
+        if(err)
+            res.status(500).send({error: 'error querying for contributors given candidate name'});
+        else if(rows.length == 0)
+            res.status(400).send({error: 'No candidate names names matched'});
+        else
+            res.json(rows);
     });
 });
 

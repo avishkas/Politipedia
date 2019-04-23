@@ -11,24 +11,23 @@
   </div>
   <br>
   <div class = "row">
-    <div class = "col-2"></div>
-    <div class = "col-4">
-      <img src="../../assets/haliburton.png" alt="Haliburton" class="img-fluid img-thumbnail">
-    </div>
-    <div class = "col-4">
-      <app-contributons></app-contributons>
-    </div>
-    <div class = "col-2"></div>
-  </div>
-  <div class = "row">
-    <div class = "col-2"></div>
-    <div class = "col-4">
-      <app-summary></app-summary>
-    </div>
-    <div class = "col-4">
-      <!--temporary placehodler for position-->
-    </div>
-    <div class = "col-2"></div>
+    <div class = "col-12"></div>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope = "col"></th>
+          <th scope = "col">Candidate Name</th>
+          <th scope = "col">Contribution Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let candidate of contributions">
+            <th scope = "row"></th>
+            <td><a (click) = "sendCandidateInformation(candidate.name)" routerLink="/candidate">{{candidate.name}}</a></td>
+            <td>$ {{candidate.contribution}}</td>
+          </tr>
+        </tbody>
+    </table>
   </div>
 </div>
 

@@ -4,3 +4,7 @@ img {
   margin-right: auto;
   width: 50%;
 }
+
+th{
+  font-weight: normal;
+}

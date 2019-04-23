@@ -18,28 +18,49 @@
     <div class = "col-3"></div>
   </div>
   <div class = "row">
-    <div class = "col-3"></div>
-    <div class = "col-3">
+    <!--<div class = "col-3"></div>-->
+    <div class = "col-6">
       <h3>Basic Information</h3>
-      <ul>
-        <li>State : {{state}}</li>
-        <li>Party: {{party}}</li>
-        <li>District: {{district}}</li>
-      </ul>
+      <!--<ul>-->
+        <!--<li>State : {{state}}</li>-->
+        <!--<li>Party: {{party}}</li>-->
+        <!--<li>District: {{district}}</li>-->
+      <!--</ul>-->
+      <table class = "table table-striped">
+        <thead class = "thead-dark">
+          <tr>
+            <th scope = "col">Basic</th>
+            <th scope = "col">Information</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope = "row">State</th>
+          <td>{{state}}</td>
+        </tr>
+        <tr>
+          <th scope = "row">Party</th>
+          <td>{{party}}</td>
+        </tr>
+        <tr>
+          <th scope = "row">District</th>
+          <td>{{district}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-    <div class = "col-3">
+    <div class = "col-6">
       <app-topdonors [listDonor]="listDonors"></app-topdonors>
     </div>
-    <div class = "col-3"></div>
-    </div>
+    <!--<div class = "col-3"></div>-->
+  </div>
   <div class = "row">
-    <h3>Bill Position</h3>
     <table class="table table-striped">
-      <thead>
+      <thead class="thead-dark">
       <tr>
         <th scope = "col"></th>
         <th scope = "col">Bill Name</th>
-        <th scope = "col">Vote Position</th>
+        <th scope = "col">Vote</th>
       </tr>
       </thead>
       <tbody>
@@ -53,6 +74,15 @@
     <!--<ul>-->
     <!--<li>{{position.title}} : {{position.vote}}</li>-->
     <!--</ul>-->
+  </div>
+  <div class = "row">
+    <h3>Twitter</h3>
+
+    <ngx-twitter-timeline
+      [data]="{sourceType: 'url', url: 'https://twitter.com/'+candidateTwitter}"
+      [opts]="{tweetLimit: 5}"
+    ></ngx-twitter-timeline>
+
   </div>
   <div class = "col-2"></div>
 </div>
