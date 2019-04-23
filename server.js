@@ -90,9 +90,9 @@ app.get('/getTwitter', (req, res) => {
     };
     var success = function (data) {
        // console.log('Data [%s]', data);
-        res.status(200)
+        res.status(200);
 
-        jsondata = JSON.parse(data)
+        jsondata = JSON.parse(data);
 
         res.send(JSON.stringify([jsondata[0]['screen_name']]));
     };
@@ -194,14 +194,36 @@ app.get('/contributorsGivenCandidate', (req, res) => {
         candidateName = candidateName.substring(0,200);
     }
     //console.log(candidateName);
-    let sqlQuery = `SELECT * FROM Contribution WHERE name='${candidateName}'`;
+    let sqlQuery = `SELECT * FROM Contribution WHERE name='${candidateName}' ORDER BY Contribution.contribution DESC`;
     mc.query(sqlQuery, function (err, rows, fields) {
         if(err)
             res.status(500).send({error: 'error querying for contributors given candidate name'});
         else if(rows.length == 0)
-            res.status(400).send({error: 'No candidate names names matched'});
-        else
+            res.status(400).send({error: 'No candidate names matched'});
+        else{
+            if(rows.length === 1){
+                rows.push({
+                    "name": "--",
+                    "donor": "--",
+                    "contribution" : "--"
+                });
+                rows.push({
+                    "name": "--",
+                    "donor": "--",
+                    "contribution" : "--"
+                });
+            }else if( rows.length === 2){
+                rows.push({
+                    "name": "--",
+                    "donor": "--",
+                    "contribution" : "--"
+                });
+            }
+
             res.json(rows);
+
+        }
+
     });
 });
 
@@ -211,14 +233,24 @@ app.get('/donor', (req, res) => {
         donorName = donorName.substring(0,200);
     }
 
-    let sqlQuery = `SELECT * FROM Donor WHERE name='${donorName}'`;
+    let sqlQuery = `SELECT Contribution.donor FROM Contribution WHERE donor LIKE '%${donorName}%'`;
     mc.query(sqlQuery, function (err, rows, fields) {
+        res.setHeader('Content-Type', 'application/json');
         if(err)
             res.status(500).send({error: 'error querying for donors'});
         else if(rows.length == 0)
             res.status(400).send({error: 'No donor names matched'});
-        else
-            res.json(rows);
+        else {
+            let toReturn = [];
+            let seenDonorNames = new Set();
+            for(let i = 0; i < rows.length; i++){
+                if(!seenDonorNames.has(rows[i]["donor"])){
+                    seenDonorNames.add(rows[i]["donor"]);
+                    toReturn.push({"name": rows[i]["donor"]});
+                }
+            }
+            res.json(toReturn);
+        }
     });
 });
 

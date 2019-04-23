@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-donor',
@@ -9,24 +10,15 @@ import {ApiService} from "../api.service";
 export class DonorComponent implements OnInit {
 
   donorName: string;
-  imageURL: string;
   contributions: any;
 
-  constructor(private APIService: ApiService) {}
+  constructor(private APIService: ApiService, private router: Router) {}
 
   ngOnInit() {
     this.getDonorName();
-    this.getImage();
     this.getDonorInfo();
   }
-  getImage() {
-    this.APIService.getImage(this.donorName).subscribe(
-      (data) => {
-        console.log(data);
-        this.imageURL = data[0];
-      }
-    );
-  }
+
   getDonorName() {
     this.donorName = sessionStorage.getItem('donorName');
   }
@@ -40,6 +32,7 @@ export class DonorComponent implements OnInit {
   }
   sendCandidateInformation(name: string) {
     sessionStorage.setItem('candidateName', name);
+    this.router.navigate(['/candidate']);
   }
 
 }

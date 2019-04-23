@@ -10,16 +10,16 @@
       </thead>
       <tbody>
       <tr>
-        <th scope = "row">Donor 1</th>
-        <td>$ 000</td>
+        <th scope = "row"><a (click) = "sendDonorName(listDonor[0]['donor'])" routerLink="/donor">{{listDonor[0]["donor"]}}</a></th>
+        <td>$ {{listDonor[0]["contribution"]}}</td>
       </tr>
       <tr>
-        <th scope = "row">Donor 2</th>
-        <td>$ 000</td>
+        <th scope = "row"><a (click) = "sendDonorName(listDonor[1]['donor'])" routerLink="/donor">{{listDonor[1]["donor"]}}</a></th>
+        <td>$ {{listDonor[1]["contribution"]}}</td>
       </tr>
       <tr>
-        <th scope = "row">Donor 3</th>
-        <td>$ 000</td>
+        <th scope = "row"><a (click) = "sendDonorName(listDonor[2]['donor'])" routerLink="/donor">{{listDonor[2]["donor"]}}</a></th>
+        <td>$ {{listDonor[2]["contribution"]}}</td>
       </tr>
       </tbody>
     </table>

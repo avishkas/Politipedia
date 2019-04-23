@@ -37,4 +37,7 @@ export class ApiService {
   getContribution(name: string) {
     return this.http.get('/contribution/',{params: {'donor-name': name}});
   }
+  getContributorsGivenCandidate(name: string){
+    return this.http.get('/contributorsGivenCandidate', {params: {'candidate-name': name}});
+  }
 }
