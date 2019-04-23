@@ -13,22 +13,23 @@ export class CandidateComponent implements OnInit {
 
   candidateName: string;
   candidateTwitter: string;
-  candidateURLName: string;
   Candidate: Observable<any>;
-  listDonors: string[];
   state: string;
   party: string;
   district: string;
   candidateBillPosition: any;
   imageURL: string;
 
-  constructor(private httpClient: HttpClient, private APIService: ApiService, private router: Router) { }
+  contributorData: any;
+
+  constructor(private APIService: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.getCandidateName();
+    this.getImage();
     this.getCandidateInfo();
     this.getBillPosition();
-    this.getImage();
+    this.getContributors();
     this.getCandidateTwitter();
   }
 
@@ -55,15 +56,15 @@ export class CandidateComponent implements OnInit {
   }
 
   getCandidateInfo() {
-    this.candidateURLName = this.candidateName.split(' ').join('+');
-    this.Candidate = this.httpClient.get<any>('/candidate/?candidate-name=' + this.candidateURLName);
-    this.Candidate.subscribe((data) => {
+    console.log(this.candidateName);
+    this.APIService.getCandidates(this.candidateName).subscribe((data) => {
       console.log(data);
       this.state = data[0].state;
       this.party = data[0].party;
       this.district = data[0].district;
     });
   }
+
   getBillPosition() {
     this.APIService.getCandidateBills(this.candidateName).subscribe(
       (data) => {
@@ -74,6 +75,19 @@ export class CandidateComponent implements OnInit {
         console.log(err);
       });
   }
+
+  getContributors(){
+    this.APIService.getContributorsGivenCandidate(this.candidateName).subscribe(
+      (data) => {
+        this.contributorData = data;
+        console.log(data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
+
   sendBillInformation(name: string) {
     // this.APIService.getBill(name).subscribe(
     //   (data) => {

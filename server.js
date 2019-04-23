@@ -194,14 +194,36 @@ app.get('/contributorsGivenCandidate', (req, res) => {
         candidateName = candidateName.substring(0,200);
     }
     //console.log(candidateName);
-    let sqlQuery = `SELECT * FROM Contribution WHERE name='${candidateName}'`;
+    let sqlQuery = `SELECT * FROM Contribution WHERE name='${candidateName}' ORDER BY Contribution.contribution DESC`;
     mc.query(sqlQuery, function (err, rows, fields) {
         if(err)
             res.status(500).send({error: 'error querying for contributors given candidate name'});
         else if(rows.length == 0)
-            res.status(400).send({error: 'No candidate names names matched'});
-        else
+            res.status(400).send({error: 'No candidate names matched'});
+        else{
+            if(rows.length === 1){
+                rows.push({
+                    "name": "--",
+                    "donor": "--",
+                    "contribution" : "--"
+                });
+                rows.push({
+                    "name": "--",
+                    "donor": "--",
+                    "contribution" : "--"
+                });
+            }else if( rows.length === 2){
+                rows.push({
+                    "name": "--",
+                    "donor": "--",
+                    "contribution" : "--"
+                });
+            }
+
             res.json(rows);
+
+        }
+
     });
 });
 
