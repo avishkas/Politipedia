@@ -11,6 +11,7 @@ var driver;
 // UNIT test begin
 
 describe("Testing search box bill functionality",function(){
+    this.timeout(15000);
 
     beforeEach(function(done){
         var service = new chrome.ServiceBuilder(path).build();
@@ -24,9 +25,9 @@ describe("Testing search box bill functionality",function(){
         done();
     });
 
-    afterEach(function(done) {
-        driver.quit()
-    });
+    // afterEach(function(done) {
+    //     driver.quit()
+    // });
 
     it("Should go to bill page", async() => {
         var searchBox = driver.findElement(webdriver.By.id("textBox"));
@@ -35,11 +36,11 @@ describe("Testing search box bill functionality",function(){
             assert.equal(value, '252');
         });
 
-        var dropDownMenu = driver.findElement(webdriver.By.id("dropdownBill"));
-        dropDownMenu.click();
-        dropDownMenu.getAttribute('value').then(function (value){
-            assert.equal(value, 'Bill');
-        });
+        await driver.findElement(webdriver.By.id("dropdownBasic1")).click();
+        await driver.findElement(webdriver.By.id("dropdownBill")).click();
+        // dropDownMenu.getAttribute('value').then(function (value){
+        //     assert.equal(value, 'Bill');
+        // });
 
         await driver.findElement(webdriver.By.id("searchBtn")).click()
             .then(function() {

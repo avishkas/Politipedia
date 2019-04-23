@@ -1,3 +1,4 @@
+
 var supertest = require("supertest");
 var should = require("should");
 var webdriver = require("selenium-webdriver");
@@ -11,6 +12,7 @@ var driver;
 // UNIT test begin
 
 describe("Testing search box election functionality",function(){
+    this.timeout(15000);
 
     beforeEach(function(done){
         var service = new chrome.ServiceBuilder(path).build();
@@ -24,9 +26,9 @@ describe("Testing search box election functionality",function(){
         done();
     });
 
-    afterEach(function(done) {
-        driver.quit()
-    });
+    // afterEach(function(done) {
+    //     driver.quit()
+    // });
 
     it("Should go to election page", async() => {
         var searchBox = driver.findElement(webdriver.By.id("textBox"));
@@ -35,11 +37,12 @@ describe("Testing search box election functionality",function(){
             assert.equal(value, '2018');
         });
 
-        var dropDownMenu = driver.findElement(webdriver.By.id("dropdownElection"));
-        dropDownMenu.click();
-        dropDownMenu.getAttribute('value').then(function (value){
-           assert.equal(value, 'Election');
-        });
+        await driver.findElement(webdriver.By.id("dropdownBasic1")).click();
+        // dropDownMenu.getAttribute('value').then(function (value){
+        //    assert.equal(value, 'Election');
+        // });
+
+        await driver.findElement(webdriver.By.id("dropdownElection")).click();
 
         await driver.findElement(webdriver.By.id("searchBtn")).click()
             .then(function() {

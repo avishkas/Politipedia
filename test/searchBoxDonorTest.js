@@ -11,6 +11,7 @@ var driver;
 // UNIT test begin
 
 describe("Testing search box donor functionality",function(){
+    this.timeout(15000);
 
     beforeEach(function(done){
         var service = new chrome.ServiceBuilder(path).build();
@@ -28,25 +29,26 @@ describe("Testing search box donor functionality",function(){
         driver.quit()
     });
 
-    it("Should go to bill page", async() => {
+    it("Should go to donor page", async() => {
         var searchBox = driver.findElement(webdriver.By.id("textBox"));
-        await searchBox.sendKeys('252');
+        await searchBox.sendKeys('United Dairy Farmers');
         searchBox.getAttribute('value').then(function (value) {
-            assert.equal(value, '252');
+            assert.equal(value, 'United Dairy Farmers');
         });
 
-        var dropDownMenu = driver.findElement(webdriver.By.id("dropdownBill"));
-        dropDownMenu.click();
-        dropDownMenu.getAttribute('value').then(function (value){
-            assert.equal(value, 'Bill');
-        });
+        await driver.findElement(webdriver.By.id("dropdownBasic1")).click();
+        await driver.findElement(webdriver.By.id("dropdownDonor")).click();
+
+        // dropDownMenu.getAttribute('value').then(function (value){
+        //     assert.equal(value, 'Bill');
+        // });
 
         await driver.findElement(webdriver.By.id("searchBtn")).click()
             .then(function() {
                 return driver.getCurrentUrl();
             })
             .then(function(currentUrl) {
-                driver.findElement(webdriver.By.linkText("252")).click();
+                driver.findElement(webdriver.By.linkText("United Dairy Farmers")).click();
             });
     });
 
