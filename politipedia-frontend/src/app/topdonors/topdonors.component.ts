@@ -15,5 +15,8 @@ export class TopdonorsComponent implements OnInit {
 
   ngOnInit() {
   }
+  sendDonorName(name: string) {
+    sessionStorage.setItem('donorName', name);
+  }
 
 }
