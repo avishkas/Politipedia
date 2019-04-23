@@ -1,4 +1,3 @@
-
 var supertest = require("supertest");
 var should = require("should");
 var webdriver = require("selenium-webdriver");
@@ -26,9 +25,9 @@ describe("Testing search box election functionality",function(){
         done();
     });
 
-    // afterEach(function(done) {
-    //     driver.quit()
-    // });
+    afterEach(function(done) {
+        driver.quit()
+    });
 
     it("Should go to election page", async() => {
         var searchBox = driver.findElement(webdriver.By.id("textBox"));

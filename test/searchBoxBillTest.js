@@ -25,9 +25,9 @@ describe("Testing search box bill functionality",function(){
         done();
     });
 
-    // afterEach(function(done) {
-    //     driver.quit()
-    // });
+    afterEach(function(done) {
+        driver.quit()
+    });
 
     it("Should go to bill page", async() => {
         var searchBox = driver.findElement(webdriver.By.id("textBox"));
