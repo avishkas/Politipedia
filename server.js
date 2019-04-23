@@ -35,13 +35,13 @@ app.get('/candidateBill', (req, res) => {
     }
     let sqlQuery = `SELECT title, vote FROM Politipedia.Candidate, Politipedia.CandidateBillVote, Politipedia.Bill WHERE Candidate.person = CandidateBillVote.candidate_id AND CandidateBillVote.bill_id = Bill.id AND name = '${candidateName}'`;
     mc.query(sqlQuery, function (err, rows, fields) {
-        if (err) 
+        if (err)
             res.status(500).send({error: "error querying for candidates"});
         else if (rows.length == 0) {
             res.status(400).send({error: "invalid request, couldn't find matching results"});
         }else {
             res.json(rows);
-        }       
+        }
         });
     });
 
@@ -90,13 +90,20 @@ app.get('/getTwitter', (req, res) => {
     };
     var success = function (data) {
        // console.log('Data [%s]', data);
-        res.status(200);
 
-        jsondata = JSON.parse(data);
 
-        res.send(JSON.stringify([jsondata[0]['screen_name']]));
+            jsondata = JSON.parse(data);
+
+            if(jsondata[0] == undefined)
+            {
+                res.status(400);
+                res.send();
+            }
+            else{
+                res.status(200);
+                res.send(JSON.stringify([jsondata[0]['screen_name']]));
+            }
     };
-
 
     twitter.getCustomApiCall('/users/search.json',{'q': searchQuery, 'page': 1, 'count': 1}, error, success);
 });
@@ -106,7 +113,7 @@ app.get('/getTwitter', (req, res) => {
 app.get('/candidate', (req, res) => {
     //get candidate name
    let candidateName = req.query['candidate-name'];
-   
+
    //limit size of user input, for security
    if(candidateName.length > 200){
        candidateName = candidateName.substring(0, 200);
@@ -114,7 +121,7 @@ app.get('/candidate', (req, res) => {
 
    //create query
    let sqlQuery = `SELECT * FROM Candidate WHERE name LIKE '%${candidateName}%'`;
-   
+
    //query database
    mc.query(sqlQuery, function (err, rows, fields) {
        //wdatabase error, we should log this but whatever
