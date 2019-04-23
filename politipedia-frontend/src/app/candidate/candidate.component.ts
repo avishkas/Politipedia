@@ -61,7 +61,12 @@ export class CandidateComponent implements OnInit {
       console.log(data);
       this.state = data[0].state;
       this.party = data[0].party;
-      this.district = data[0].district;
+
+      if(data[0].district === "")
+        this.district = "Senate";
+      else
+        this.district = data[0].district;
+
     });
   }
 
