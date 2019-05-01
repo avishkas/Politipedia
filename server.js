@@ -197,8 +197,23 @@ app.get('/contributorsGivenCandidate', (req, res) => {
     if (candidateName.length > 200) {
         candidateName = candidateName.substring(0, 200);
     }
+    var firstName;
+    var lastName;
+    var nameArray = candidateName.split(" ");
+    if (nameArray.length> 2) {
+        firstName = candidateName.split(" ")[0];
+        if ((candidateName.endsWith("Jr.") || candidateName.endsWith("III") || candidateName.endsWith("IV"))) {
+            lastName = nameArray[nameArray.length - 2];
+        } else {
+            lastName = nameArray[nameArray.length - 1];
+        }
+        //candidateName = firstName + " " + lastName;
+    } else {
+        firstName = nameArray[0];
+        lastName = nameArray[1];
+    }
     //console.log(candidateName);
-    let sqlQuery = `SELECT * FROM Contribution WHERE name='${candidateName}' ORDER BY Contribution.contribution DESC`;
+    let sqlQuery = `SELECT * FROM Contribution WHERE name LIKE '${firstName}%${lastName}' ORDER BY Contribution.contribution DESC`;
     mc.query(sqlQuery, function (err, rows, fields) {
         if (err)
             res.status(500).send({error: 'error querying for contributors given candidate name'});
