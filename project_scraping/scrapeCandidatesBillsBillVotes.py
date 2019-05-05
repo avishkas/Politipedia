@@ -14,45 +14,58 @@ def scrape_govtrack_bills_votes():
     f = open('govtrackBills.csv', 'w', encoding="utf-8")
 
     for result in results:
-        link = result.findAll("a")[0]['href']
-        votePage = req.urlopen(link).read()
-        votePageSoup = BeautifulSoup(votePage, "html.parser")
-        billLink = votePageSoup.findAll("div", {"id": "vote_explainer"})[0].findAll("a")[0]['href']
-        #print(billLink)
-        if("members" in billLink or "http" in billLink):
-            continue
-        base = "https://www.govtrack.us"
-        billLink = base + billLink
-        billPage = req.urlopen(billLink).read()
-        billPageSoup = BeautifulSoup(billPage, "html.parser")
-
-        ### Scrape fields
-        title = billPageSoup.findAll("div", {"class": "h1-multiline"})[0].find("h1").contents[0]
-        sponsor_name = billPageSoup.findAll("a", {"class": "name"})[0].contents[0]
-        #print(title)
-        
-        billOverviewElement = billPageSoup.findAll("div", {"id": "bill-overview-panel"})[0].findAll("dd")[1]
-        pars = billOverviewElement.findAll("p")
-        try:
-            introduced_date = pars[0].findAll("strong")[1].contents[0]
-        except:
-            continue
-        status = pars[1].contents[0]
-
-        line = str(p_id) + "; " + title + "; " + sponsor_name + "; " + introduced_date + "; " + status + "\n"
-        f.write(line)
+		billPageSoup = findAppropriateInfoPage(result)
+        title, sponsor_name, introduced_date, status = scrapeBillFields(billPageSoup)
+		formatDataAndWrite(title, sponsor_name, introduced_date, status)
+		
         p_id = p_id + 1
 
-        #csvLink = votePageSoup.find("div", {"id": "vote_notes"}).findAll("a")[3]['href']
-        csvLink = link + "/export/csv"
-        splits = link.split("/")
-        #print(splits)
-        name = "votes_" + splits[5] + "_" + splits[6] + ".csv"
-        file = open("voteCsvs/" + name, "wb")
-        #print(name)
-        file.write(req.urlopen(csvLink).read())
+		writeBillVoteCSV(result)
 
     f.close()
+	
+def writeBillVoteCSV(result):
+	#csvLink = votePageSoup.find("div", {"id": "vote_notes"}).findAll("a")[3]['href']
+	link = result.findAll("a")[0]['href']
+	csvLink = link + "/export/csv"
+	splits = link.split("/")
+	#print(splits)
+	name = "votes_" + splits[5] + "_" + splits[6] + ".csv"
+	file = open("voteCsvs/" + name, "wb")
+	#print(name)
+	file.write(req.urlopen(csvLink).read())
+
+def formatDataAndWrite(title, sponsor_name, introduced_date, status):
+	line = str(p_id) + "; " + title + "; " + sponsor_name + "; " + introduced_date + "; " + status + "\n"
+	f.write(line)
+	
+def scrapeBillFields(billPageSoup):
+	### Scrape fields
+	title = billPageSoup.findAll("div", {"class": "h1-multiline"})[0].find("h1").contents[0]
+	sponsor_name = billPageSoup.findAll("a", {"class": "name"})[0].contents[0]
+	
+	billOverviewElement = billPageSoup.findAll("div", {"id": "bill-overview-panel"})[0].findAll("dd")[1]
+	pars = billOverviewElement.findAll("p")
+	try:
+		introduced_date = pars[0].findAll("strong")[1].contents[0]
+	except:
+		continue
+	status = pars[1].contents[0]
+	return title, sponsor_name, introduced_date, status
+	
+def findAppropriateInfoPage(result):
+	link = result.findAll("a")[0]['href']
+	votePage = req.urlopen(link).read()
+	votePageSoup = BeautifulSoup(votePage, "html.parser")
+	billLink = votePageSoup.findAll("div", {"id": "vote_explainer"})[0].findAll("a")[0]['href']
+	#print(billLink)
+	if("members" in billLink or "http" in billLink):
+		continue
+	base = "https://www.govtrack.us"
+	billLink = base + billLink
+	billPage = req.urlopen(billLink).read()
+	billPageSoup = BeautifulSoup(billPage, "html.parser")
+	return billPageSoup
 
 def formatRepsAndSenators():
     orig = open('congress_votes_116-2019_h135.csv', 'r', encoding="utf-8")
