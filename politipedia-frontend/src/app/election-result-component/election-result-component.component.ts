@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../api.service";
+import {GetInfoService} from "../get-info.service";
 
 @Component({
   selector: 'app-election-result-component',
@@ -12,7 +13,7 @@ export class ElectionResultComponentComponent implements OnInit {
   searchResults: any;
   validEntry: boolean;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,  private infoService: GetInfoService) { }
 
   ngOnInit() {
     this.getUserInput();
@@ -31,9 +32,4 @@ export class ElectionResultComponentComponent implements OnInit {
       }
     );
   }
-  sendName(name: string) {
-    sessionStorage.setItem('candidateName', name);
-  }
-
-
 }

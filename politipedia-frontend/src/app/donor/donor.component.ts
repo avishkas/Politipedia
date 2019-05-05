@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../api.service";
 import {Router} from "@angular/router";
+import {GetInfoService} from "../get-info.service";
 
 @Component({
   selector: 'app-donor',
@@ -12,7 +13,7 @@ export class DonorComponent implements OnInit {
   donorName: string;
   contributions: any;
 
-  constructor(private APIService: ApiService, private router: Router) {}
+  constructor(private APIService: ApiService, private router: Router,  private infoService: GetInfoService) {}
 
   ngOnInit() {
     this.getDonorName();

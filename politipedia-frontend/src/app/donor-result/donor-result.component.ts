@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import { HttpClient , HttpHeaders} from '@angular/common/http';
 import {ApiService} from '../api.service';
+import {GetInfoService} from "../get-info.service";
 
 @Component({
   selector: 'app-donor-result',
@@ -15,7 +16,7 @@ export class DonorResultComponent implements OnInit {
   validEntry: boolean;
 
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private infoService: GetInfoService) { }
 
   ngOnInit() {
     this.getUserInput();
@@ -33,9 +34,6 @@ export class DonorResultComponent implements OnInit {
         console.log(err);
       }
     );
-  }
-  sendName(name: string) {
-    sessionStorage.setItem('donorName', name);
   }
 
 

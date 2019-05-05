@@ -7,13 +7,10 @@
   <div class = "row justify-content-center">
     <h1>Donor Results</h1>
   </div>
-  <!--<div class ="row">-->
-    <!--<input class="form-control" type="text" placeholder="{{donorQueryName}}" readonly>-->
-  <!--</div>-->
   <div *ngIf="validEntry; else elseBlock">
     <div *ngFor="let donor of donorData" class="card fullwidth">
       <div class="card-body fullwidth">
-        <a (click) = "sendName(donor.name)" routerLink="/donor">{{donor.name}}</a>
+        <a (click) = "infoService.setDonorName(donor.name)" routerLink="/donor">{{donor.name}}</a>
       </div>
     </div>
   </div>

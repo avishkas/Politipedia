@@ -4,6 +4,7 @@ import { HttpClient , HttpHeaders} from '@angular/common/http';
 import {ApiService} from "../api.service";
 import {GetInputService} from '../get-input.service';
 import {Router} from "@angular/router";
+import {GetInfoService} from "../get-info.service";
 
 @Component({
   selector: 'app-candidate-result',
@@ -17,7 +18,7 @@ export class CandidateResultComponent implements OnInit {
   searchResults: any;
   validEntry: boolean;
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private infoService: GetInfoService) {}
 
 
 
@@ -25,14 +26,8 @@ export class CandidateResultComponent implements OnInit {
     this.getUserInput();
   }
 
-  sendName(name: string) {
-    sessionStorage.setItem('candidateName', name);
-  }
-
   getUserInput() {
-    this.searchQuery = sessionStorage.getItem('searchCandidateName');
-    // sessionStorage.setItem('userInput', null);
-    // sessionStorage.setItem('candidateName' , this.searchQuery);
+    this.searchQuery = sessionStorage.getItem('candidateName');
 
     this.apiService.getCandidates(this.searchQuery).subscribe(
     (data) => {

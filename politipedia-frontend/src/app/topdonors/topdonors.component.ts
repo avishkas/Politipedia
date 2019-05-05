@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {GetInfoService} from "../get-info.service";
 
 @Component({
   selector: 'app-topdonors',
@@ -11,12 +12,9 @@ export class TopdonorsComponent implements OnInit {
 
   @Input() listDonor: string[];
 
-  constructor() { }
+  constructor(private infoService: GetInfoService) { }
 
   ngOnInit() {
-  }
-  sendDonorName(name: string) {
-    sessionStorage.setItem('donorName', name);
   }
 
 }

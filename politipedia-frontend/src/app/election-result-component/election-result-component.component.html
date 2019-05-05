@@ -12,8 +12,8 @@
       <div class="card-body fullwidth">
         <ul>
           <li>Race: {{position.race}}</li>
-          <li>Incumbent: <a (click)="sendName(position.incumbent)" routerLink="/candidate">{{position.incumbent}}</a></li>
-          <li>Winner: <a (click)="sendName(position.winner)" routerLink="/candidate">{{position.winner}}</a></li>
+          <li>Incumbent: <a (click)="infoService.setCandidateName(position.incumbent)" routerLink="/candidate">{{position.incumbent}}</a></li>
+          <li>Winner: <a (click)="infoService.setCandidateName(position.winner)" routerLink="/candidate">{{position.winner}}</a></li>
         </ul>
       </div>
     </div>

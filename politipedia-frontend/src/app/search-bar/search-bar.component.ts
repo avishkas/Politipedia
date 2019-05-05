@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {GetInputService} from '../get-input.service';
+import {GetInfoService} from "../get-info.service";
 
 @Component({
   selector: 'app-search-bar',
@@ -14,7 +15,7 @@ export class SearchBarComponent implements OnInit {
   message = '';
   validInput: boolean;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private infoService: GetInfoService) { }
 
 
   onSearch() {
@@ -42,16 +43,16 @@ export class SearchBarComponent implements OnInit {
 
   sendInput() {
     if(this.dropdownSelect === 'Candidate') {
-      sessionStorage.setItem('searchCandidateName', this.inputValue);
+      this.infoService.setCandidateName(this.inputValue);
     }
     if(this.dropdownSelect === 'Election') {
-      sessionStorage.setItem('electionYear', this.inputValue);
+      this.infoService.setElectionYear(this.inputValue);
     }
     if(this.dropdownSelect === 'Donor') {
-      sessionStorage.setItem('donorName', this.inputValue);
+      this.infoService.setDonorName(this.inputValue);
     }
     else{
-      sessionStorage.setItem('billName', this.inputValue);
+      this.infoService.setBillName(this.inputValue);
     }
   }
 

@@ -45,7 +45,7 @@
         <tbody>
           <tr *ngFor="let candidate of candidateObservable | async">
             <td>
-              <a (click) = "sendCandidateName(candidate.name)" routerLink="/candidate">
+              <a (click) = "infoService.setCandidateName(candidate.name)" routerLink="/candidate">
               {{candidate.name}}
               </a>
             </td>

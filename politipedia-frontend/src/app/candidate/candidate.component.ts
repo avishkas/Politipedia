@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ApiService} from "../api.service";
 import {Router} from "@angular/router";
+import {GetInfoService} from "../get-info.service";
 
 @Component({
   selector: 'app-candidate',
@@ -22,7 +23,7 @@ export class CandidateComponent implements OnInit {
 
   contributorData: any;
 
-  constructor(private APIService: ApiService, private router: Router) { }
+  constructor(private APIService: ApiService, private router: Router, private infoService: GetInfoService) { }
 
   ngOnInit() {
     this.getCandidateName();
@@ -53,6 +54,7 @@ export class CandidateComponent implements OnInit {
 
   getCandidateName() {
     this.candidateName = sessionStorage.getItem('candidateName');
+    console.log(this.candidateName);
   }
 
   getCandidateInfo() {
@@ -90,20 +92,7 @@ export class CandidateComponent implements OnInit {
       (err) => {
         console.log(err);
       }
-    )
-  }
-
-  sendBillInformation(name: string) {
-    // this.APIService.getBill(name).subscribe(
-    //   (data) => {
-    //     console.log(data[0]);
-    //     sessionStorage.setItem('bill_title', data[0].title);
-    //     sessionStorage.setItem('bill_introduced_date', data[0].introduced_date);
-    //     sessionStorage.setItem('bill_status', data[0].status);
-    //     sessionStorage.setItem('bill_sponsor', data[0].sponsor_name);
-    //   }
-    // );
-    sessionStorage.setItem('billName', name);
+    );
   }
 
 }

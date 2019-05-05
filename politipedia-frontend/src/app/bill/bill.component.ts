@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../api.service";
+import {GetInfoService} from "../get-info.service";
 
 @Component({
   selector: 'app-bill',
@@ -17,7 +18,7 @@ export class BillComponent implements OnInit {
   candidateObservable: any;
   inputBill: string;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private infoService: GetInfoService) { }
 
   ngOnInit() {
     this.getBillName();
@@ -36,12 +37,6 @@ export class BillComponent implements OnInit {
         this.displayCandidates(this.billId);
       }
     );
-    // this.billId = sessionStorage.getItem('bill_id');
-    // this.billName = sessionStorage.getItem('bill_title').split(':')[0];
-    // this.billSummary = sessionStorage.getItem('bill_title').split(':')[1];
-    // this.billStatus = sessionStorage.getItem('bill_status');
-    // this.billIntroducedDate = sessionStorage.getItem('bill_introduced_date');
-    // this.billSponsor = sessionStorage.getItem('bill_sponsor');
   }
   displayCandidates(id: string) {
     console.log(id);
@@ -54,9 +49,6 @@ export class BillComponent implements OnInit {
         console.log(err);
       }
     );
-  }
-  sendCandidateName(name: string){
-    sessionStorage.setItem('candidateName', name);
   }
 
 

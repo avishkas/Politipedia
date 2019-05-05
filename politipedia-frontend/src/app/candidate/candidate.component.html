@@ -61,7 +61,7 @@
       <tbody>
         <tr *ngFor="let position of candidateBillPosition">
           <th scope = "row"></th>
-          <td><a (click) = "sendBillInformation(position.title)" routerLink="/bill">{{position.title}}</a></td>
+          <td><a (click) = "infoService.setBillName(position.title)" routerLink="/bill">{{position.title}}</a></td>
           <td>{{position.vote}}</td>
         </tr>
       </tbody>
