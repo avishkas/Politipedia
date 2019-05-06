@@ -63,10 +63,7 @@ app.get('/getTwitter', (req, res) => {
     twitter.getCustomApiCall('/users/search.json', {'q': searchQuery, 'page': 1, 'count': 1}, error, success);
 });
 
-app.listen(port, () => console.log(`Politipedia backend server istening on port ${port}!`));
-=======
 app.listen(port, () => console.log(`Politipedia backend server listening on port ${port}!`));
->>>>>>> 1270cc891396e4a4f0a5baa4197aba8fabacfb98
 
 
 
