@@ -27,6 +27,7 @@ import { DonorResultComponent } from './donor-result/donor-result.component';
 import { BillResultComponent } from './bill-result/bill-result.component';
 
 // Import ngx-twitter-timeline
+// @ts-ignore
 import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 
 const appRoutes: Routes = [
