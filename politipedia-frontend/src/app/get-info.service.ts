@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class GetInfoService {
 
   constructor() { }
+
   setCandidateName(name: string) {
     sessionStorage.setItem('candidateName', name);
   }
