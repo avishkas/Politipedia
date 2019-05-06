@@ -12,6 +12,7 @@ var Twitter = require('twitter-node-client').Twitter;
 var twitter = new Twitter(config);
 
 module.exports = function (app) {
+
     app.get('/getTwitter', (req, res) => {
 
         let searchQuery = req.query['query-string'];
@@ -24,19 +25,18 @@ module.exports = function (app) {
 
         //Strategy pattern: Success
         var success = function (data) {
-            // console.log('Data [%s]', data);
 
             jsondata = JSON.parse(data);
 
             if (jsondata[0] == undefined) {
-                res.status(400);
-                res.send();
+                res.status(400).send();
             } else {
-                res.status(200);
-                res.send(JSON.stringify([jsondata[0]['screen_name']]));
+                res.status(200).send(JSON.stringify([jsondata[0]['screen_name']]));
             }
         };
 
-        twitter.getCustomApiCall('/users/search.json', {'q': searchQuery, 'page': 1, 'count': 1}, error, success);
+        twitter.getCustomApiCall('/users/search.json',
+            {'q': searchQuery, 'page': 1, 'count': 1},
+            error, success);
     });
 }
