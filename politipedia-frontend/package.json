@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^7.2.13",
     "@angular/router": "^7.2.13",
     "@ng-bootstrap/ng-bootstrap": "^4.1.1",
+    "chromedriver": "^74.0.0",
     "core-js": "^2.5.4",
     "ngx-twitter-timeline": "^0.1.5",
     "rxjs": "~6.3.3",

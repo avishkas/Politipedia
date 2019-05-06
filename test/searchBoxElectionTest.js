@@ -3,6 +3,7 @@ var should = require("should");
 var webdriver = require("selenium-webdriver");
 var chrome = require('selenium-webdriver/chrome');
 var path = require('chromedriver').path;
+var assert = require('assert');
 
 // This agent refers to PORT where program is runninng.
 
@@ -10,8 +11,8 @@ var server = supertest.agent("http://ec2-13-59-161-15.us-east-2.compute.amazonaw
 var driver;
 // UNIT test begin
 
-describe("Testing search box election functionality",function(){
-    this.timeout(15000);
+describe("Testing election functionality",function(){
+    this.timeout(30000);
 
     beforeEach(function(done){
         var service = new chrome.ServiceBuilder(path).build();
@@ -25,9 +26,9 @@ describe("Testing search box election functionality",function(){
         done();
     });
 
-    afterEach(function(done) {
-        driver.quit()
-    });
+    // afterEach(function(done) {
+    //     driver.quit()
+    // });
 
     it("Should go to election page", async() => {
         var searchBox = driver.findElement(webdriver.By.id("textBox"));

@@ -6,9 +6,10 @@ var path = require('chromedriver').path;
 // This agent refers to PORT where program is runninng.
 var server = supertest.agent("http://ec2-13-59-161-15.us-east-2.compute.amazonaws.com:3000/#/");
 var driver;
+var assert = require('assert');
 // UNIT test begin
-describe("Testing search box functionalities",function(){
-    this.timeout(15000);
+describe("Testing candidate functionalities",function(){
+    this.timeout(30000);
 
     beforeEach(function(done){
         // driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
@@ -25,9 +26,9 @@ describe("Testing search box functionalities",function(){
         done();
     });
 
-    afterEach(function(done) {
-        driver.quit()
-    });
+    // afterEach(function(done) {
+    //     driver.quit()
+    // });
 
     it("Should go to candidate page", async() => {
         var searchBox = driver.findElement(webdriver.By.id("textBox"));
