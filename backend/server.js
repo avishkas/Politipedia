@@ -1,5 +1,4 @@
 const express = require('express');
-const request = require('request');
 
 const app = express();
 const port = 3000;
@@ -11,27 +10,14 @@ require('./elections_endpoint')(app);
 require('./candidate_endpoint')(app);
 require('./bill_candidate_endpoint')(app);
 require('./c_bill_endpoint')(app);
+require('./twitter_endpoint')(app);
+require('./google_image_endpoint')(app);
+
 require('dotenv').config();
 
 
 
-var Twitter = require('twitter-node-client').Twitter;
-
-var config = {
-    "consumerKey": "rsM8Uj6SV4F8BZJyxWhyGU7Yu",
-    "consumerSecret": "Fw4M7s7GrsXjgQMp1PIN13z19KHYFVuMm5yh2QBDH1UFOJ36vP",
-    "accessToken": "1120055016906285057-eQxPz5VoB91xYQhDgIkBgRlS8D3M0C",
-    "accessTokenSecret": "nAEdgJpexImPexdcnRwa6RLVBF8TJsuKfEvZLYMtsRPKz",
-    "callBackUrl": "http://localtest.me"
-}
-
-var twitter = new Twitter(config);
-
-app.use(express.static('./politipedia-frontend/dist/politipedia-frontend'));
-// connection configurations
-
-
-app.use(express.static('./Politipedia/politipedia-frontend/dist/politipedia-frontend'));
+app.use(express.static('../politipedia-frontend/dist/politipedia-frontend'));
 
 app.get('/getImage', (req, res) => {
     let searchQuery = req.query['candidate-name'];
@@ -77,7 +63,7 @@ app.get('/getTwitter', (req, res) => {
     twitter.getCustomApiCall('/users/search.json', {'q': searchQuery, 'page': 1, 'count': 1}, error, success);
 });
 
-app.listen(port, () => console.log(`Politipedia backend server istening on port ${port}!`));
+app.listen(port, () => console.log(`Politipedia backend server listening on port ${port}!`));
 
 
 
