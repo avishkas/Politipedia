@@ -31,7 +31,7 @@ app.use(express.static('./politipedia-frontend/dist/politipedia-frontend'));
 // connection configurations
 
 
-app.use(express.static('./Politipedia/politipedia-frontend/dist/politipedia-frontend'));
+app.use(express.static('../politipedia-frontend/dist/politipedia-frontend'));
 
 app.get('/getImage', (req, res) => {
     let searchQuery = req.query['candidate-name'];
